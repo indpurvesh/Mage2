@@ -14,8 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin', 'namespace' => 'Admin'], function ()
-{
-    Route::resource('pages', 'PagesController');
 
+Route::group(['prefix' => '/admin'], function() {
+
+    Route::get('/login', 'Admin\AuthController@getlogin');
+    Route::get('/logout', 'Admin\AuthController@getLogout');
+
+    Route::post('/login', 'Admin\AuthController@postLogin');
+
+    Route::get('/register', 'Admin\AuthController@getRegister');
+    Route::post('/register', 'Admin\AuthController@postRegister');
+
+    Route::group(['middleware' => 'auth'], function() {
+        Route::get('/', 'Admin\UsersController@dashboard');
+    });
 });
