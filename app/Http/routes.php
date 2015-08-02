@@ -27,5 +27,6 @@ Route::group(['prefix' => '/admin'], function() {
 
     Route::group(['middleware' => 'auth'], function() {
         Route::get('/', 'Admin\UsersController@dashboard');
+        Route:resource("/entity", "Admin\EntityController");
     });
 });

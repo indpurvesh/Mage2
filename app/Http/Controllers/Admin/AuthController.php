@@ -28,6 +28,9 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
+
+
 namespace App\Http\Controllers\Admin;
 
 use App\User;
@@ -75,6 +78,7 @@ class AuthController extends Controller
         $this->middleware('guest', ['except' => 'getLogout']);
         $this->loginPath = url("/admin/login");
         $this->redirectPath = "/admin";
+        $this->redirectTo = '/admin';
     }
 
     /**

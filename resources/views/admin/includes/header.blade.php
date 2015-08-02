@@ -15,8 +15,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-          <li><a href="{!! @url('admin/pages') !!}" title="">Pages</a></li>
-          <li><a href="{!! @url('admin/posts') !!}" title="">Posts</a></li>
+          <li><a href="{!! @url('admin/entity') !!}" title="">Entity</a></li>
+          <li><a href="{!! @url('admin/attribute') !!}" title="">Attribute</a></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
