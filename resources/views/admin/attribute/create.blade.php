@@ -12,4 +12,22 @@
         {!! Form::close() !!}
 	</div>
 </div>
+
+
+<div class='custom_attribute_row hide'>
+    <div class="row ">
+       <div class="col-md-4 key">
+               <label>Key</label>
+               <input type="text" name="select[__UNIQUE__][key][]" class="form-control" placeholder="Key..">
+       </div>
+       <div class="col-md-4 value">
+           <label>Value</label>
+           <input type="text" name="select[__UNIQUE__][value][]" class="form-control" placeholder="Value">
+       </div>
+       <div class="col-md-4 delete">
+           <label>&nbsp;</label>
+           <a href="" class="btn btn-danger form-control">Delete</a>
+       </div>
+   </div>
+</div>
 @endsection

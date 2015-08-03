@@ -31,8 +31,10 @@ class AttributeController extends Controller
     public function create()
     {
         $entities = Entity::lists('name','id');
+        $attributeKey = strtolower(str_random(6));
         return view('admin.attribute.create')->with('entities',$entities)
-                                    ->with('types', $this->attributeType);
+                                    ->with('types', $this->attributeType)
+                                    ->with('attributeKey', $attributeKey);
     }
 
     /**
