@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Admin\Attribute;
+use App\Admin\Entity;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -9,6 +10,8 @@ use App\Http\Controllers\Controller;
 
 class AttributeController extends Controller
 {
+    //'text','select','checkbox','radio','file'
+    public $attributeType = ['text' => 'Text','select'=>'Select', 'checkbox' => 'Checkbox', 'radio' => 'Radio', 'file' => 'File'];
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +19,8 @@ class AttributeController extends Controller
      */
     public function index()
     {
-        //
+        $attributes = Attribute::all();
+        return view('admin.attribute.index')->with('attributes', $attributes);
     }
 
     /**
@@ -26,7 +30,9 @@ class AttributeController extends Controller
      */
     public function create()
     {
-        //
+        $entities = Entity::lists('name','id');
+        return view('admin.attribute.create')->with('entities',$entities)
+                                    ->with('types', $this->attributeType);
     }
 
     /**

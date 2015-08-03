@@ -4,19 +4,17 @@
     @include('admin.includes.head')
 </head>
 <body>
-<div class="container-fluid">
-	<div class="content_wrapper">
-	    <header class="row">
+    <header class="container-fluid">
 	        @include('admin.includes.header')
 	    </header>
-	    <div id="main" class="row content_wrapper">
+	    <div id="main" class="container-fluid">
 	    	@yield('content')
 	    </div>
 	
-	    <footer class="row content_wrapper ">
+	    <footer class="container-fluid">
 	        <h1>Footer Area</h1>
 	    </footer>
-	</div>
-</div>
+
+
 </body>
 </html>

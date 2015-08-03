@@ -3,16 +3,16 @@
 @section('content')
 
 <div class="content">
-	<h1>Entity List</h1>
+	<h1>Attribute List</h1>
 	<hr/>
         <div class="pull-right">
-            <a href="{{ @url('/admin/entity/create') }}" class="btn btn-primary" title="Add Entity" >
-                Add Entity
+            <a href="{{ @url('/admin/attribute/create') }}" class="btn btn-primary" title="Add Attribute" >
+                Add Attributes
             </a>
             <br/><br/>
         </div>
-     @if ( !$entities->count() )
-        You have no Entity
+     @if ( !$attributes->count() )
+        You have no Attrbutes
     @else
 
     
@@ -23,13 +23,14 @@
 	    		<th>Edit</th>
 	    		<th>Delete</th>
 	    	</tr>
-	     	@foreach( $entities as $entity)
+	     	@foreach( $attributes as $attribute)
 	    	<tr>
-	   			<td>{{ $entity->id }}</td>
-	   			<td>{{ $entity->name }}</td>
-	   			<td><a href="{{ route('admin.entity.edit',$entity->id) }}" title="Edit">Edit</a></td>
+	   			<td>{{ $attribute->id }}</td>
+	   			<td>{{ $attribute->name }}</td>
+	   			<td><a href="{{ route('admin.attribute.edit',$attribute->id) }}" title="Edit">Edit</a></td>
 	   			<td>
-	   				{!! Form::open(array('route' => array('admin.entity.destroy', $entity->id), 'method' => 'DELETE' , 'id' => 'deleteForm')) !!}
+	   				{!! Form::open(array('route' => array('admin.attribute.destroy', $attribute->id),
+	   									'method' => 'DELETE' , 'id' => 'deleteForm')) !!}
 	   				<a href="#" onclick="jQuery(this).parents('form:first').submit()">Delete</a>
 					{!! Form::close() !!}
 	   				
