@@ -6,9 +6,10 @@
 	<h1>Entity Edit Form</h1>
 		
 	<div class="product_add_form">
-		{!! Form::model($entity,array('method' => 'PATCH', 'url' => url('/admin/entity',$entity->id)) ) !!}
+		{!! Form::model($attribute,array('method' => 'PATCH', 
+                                                 'url' => url('/admin/attribute',$attribute->id)) ) !!}
 		
-		 @include('admin.entity._edit')
+		 @include('admin.attribute._edit')
 		
 		{!! Form::hidden('id') !!}
 		

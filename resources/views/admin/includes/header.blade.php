@@ -28,7 +28,7 @@
       		<ul class="dropdown-menu">
       			<li ><a href="{!! url('/customer/account') !!}" title="My Account">My Account</a></li>
       			<li><a href="{!! url('/customer/settings') !!}">Settings</a></li>
-      			<li><a href="{!! url('/customer/auth/logout') !!}">Logout</a></li>
+      			<li><a href="{!! url('/admin/logout') !!}">Logout</a></li>
       		</ul>
       	</li>
       	

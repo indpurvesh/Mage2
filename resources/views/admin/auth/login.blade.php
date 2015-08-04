@@ -1,8 +1,9 @@
 @extends('admin.master')
 
 @section('content')
+<div class="col-lg-offset-2 col-md-5">
 <h1>Login Here</h1>
-<div class="col-md-5">
+
 <form method="POST" action="{!! url('/admin/login')  !!}">
     {!! csrf_field() !!}
 

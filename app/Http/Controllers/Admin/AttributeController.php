@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Admin\Attribute;
 use App\Admin\Entity;
 use Illuminate\Http\Request;
@@ -8,17 +9,17 @@ use App\Admin\AttributeSelectValue;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class AttributeController extends Controller
-{
+class AttributeController extends Controller {
+
     //'text','select','checkbox','radio','file'
-    public $attributeType = ['text' => 'Text','select'=>'Select', 'checkbox' => 'Checkbox', 'radio' => 'Radio', 'file' => 'File'];
+    public $attributeType = ['text' => 'Text', 'select' => 'Select', 'checkbox' => 'Checkbox', 'radio' => 'Radio', 'file' => 'File'];
+
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-    public function index()
-    {
+    public function index() {
         $attributes = Attribute::all();
         return view('admin.attribute.index')->with('attributes', $attributes);
     }
@@ -28,13 +29,12 @@ class AttributeController extends Controller
      *
      * @return Response
      */
-    public function create()
-    {
-        $entities = Entity::lists('name','id');
+    public function create() {
+        $entities = Entity::lists('name', 'id');
         $attributeKey = strtolower(str_random(6));
-        return view('admin.attribute.create')->with('entities',$entities)
-                                    ->with('types', $this->attributeType)
-                                    ->with('attributeKey', $attributeKey);
+        return view('admin.attribute.create')->with('entities', $entities)
+                        ->with('types', $this->attributeType)
+                        ->with('attributeKey', $attributeKey);
     }
 
     /**
@@ -43,18 +43,16 @@ class AttributeController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $attribute = Attribute::create($request->all());
         $selects = $request->get('select');
-        foreach ($selects as  $key => $select) {
+        foreach ($selects as $key => $select) {
             $select['attribute_id'] = $attribute->id;
-           if(is_int($key)) {
-               //update here 
-           } else {
-               
-               AttributeSelectValue::create($select);
-           }
+            if (is_int($key)) {
+                //update here 
+            } else {
+                AttributeSelectValue::create($select);
+            }
         }
         //return true;
         return redirect('/admin/attribute');
@@ -66,8 +64,7 @@ class AttributeController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -77,9 +74,14 @@ class AttributeController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
+        $attribute = Attribute::findorfail($id);
+        $entities = Entity::lists('name', 'id');
+        $attributeKey = strtolower(str_random(6));
+        return view('admin.attribute.edit')->with('entities', $entities)
+                        ->with('types', $this->attributeType)
+                        ->with('attributeKey', $attributeKey)
+                        ->with('attribute', $attribute);
     }
 
     /**
@@ -89,9 +91,21 @@ class AttributeController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        $attribute = Attribute::findorfail($id);
+        $attribute->update($request->all());
+        $selects = $request->get('select');
+        foreach ($selects as $id => $select) {
+            $select['attribute_id'] = $attribute->id;
+            if (is_int($id)) {
+                $attributeSelectValue = AttributeSelectValue::findorfail($id);
+                $attributeSelectValue->update($select);
+            } else {
+                AttributeSelectValue::create($select);
+            }
+        }
+        //return true;
+        return redirect('/admin/attribute');
     }
 
     /**
@@ -100,8 +114,8 @@ class AttributeController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
     }
+
 }

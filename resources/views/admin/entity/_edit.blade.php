@@ -12,6 +12,6 @@
 @include('admin._display_errors')
 
 <div class="form-group">
-    {!!  Form::button('Save',array(	'onclick' => 'jQuery(".product_add_form form").submit()', 
+    {!!  Form::button('Save',array(	'onclick' => 'jQuery(this).parents("form:first").submit()', 
     'class' => 'btn btn-primary' ))  !!}
 </div>
