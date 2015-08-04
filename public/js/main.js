@@ -2,6 +2,7 @@ var main = {
     init: function () {
         var me = main;
         jQuery(document).on('click','.add_custom_button',me.addCustomButtonOnClick);
+        jQuery(document).on('change','.attribute_type',me.attributeTypeOnChange);
     },
     addCustomButtonOnClick: function(e) {
         e.preventDefault();
@@ -20,6 +21,14 @@ var main = {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         
         return text;
+    },
+    attributeTypeOnChange: function(e) {
+        e.preventDefault();
+        var me = main;
+        if(jQuery(this).val() == "select") {
+            jQuery('.attribute_select_option').removeClass('hide');
+            me.addCustomButtonOnClick(e);
+        }
     }
 }
 

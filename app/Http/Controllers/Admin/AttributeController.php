@@ -115,7 +115,8 @@ class AttributeController extends Controller {
      * @return Response
      */
     public function destroy($id) {
-        //
+        Attribute::destroy($id);
+        return redirect('/admin/attribute');
     }
 
 }
