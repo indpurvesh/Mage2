@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 class AttributeController extends Controller {
 
     //'text','select','checkbox','radio','file'
-    public $attributeType = ['text' => 'Text', 'select' => 'Select', 'checkbox' => 'Checkbox', 'radio' => 'Radio', 'file' => 'File'];
+    public $attributeType = ['text' => 'Text', 'textarea' => 'TextArea', 'select' => 'Select', 'checkbox' => 'Checkbox', 'radio' => 'Radio', 'file' => 'File'];
 
     /**
      * Display a listing of the resource.
@@ -46,15 +46,8 @@ class AttributeController extends Controller {
     public function store(Request $request) {
         $attribute = Attribute::create($request->all());
         $selects = $request->get('select');
-        foreach ($selects as $key => $select) {
-            $select['attribute_id'] = $attribute->id;
-            if (is_int($key)) {
-                //update here 
-            } else {
-                AttributeSelectValue::create($select);
-            }
-        }
-        //return true;
+        $this->_saveAttributeSelect($selects, $attribute);
+
         return redirect('/admin/attribute');
     }
 
@@ -95,15 +88,10 @@ class AttributeController extends Controller {
         $attribute = Attribute::findorfail($id);
         $attribute->update($request->all());
         $selects = $request->get('select');
-        foreach ($selects as $id => $select) {
-            $select['attribute_id'] = $attribute->id;
-            if (is_int($id)) {
-                $attributeSelectValue = AttributeSelectValue::findorfail($id);
-                $attributeSelectValue->update($select);
-            } else {
-                AttributeSelectValue::create($select);
-            }
-        }
+
+        $this->_saveAttributeSelect($selects, $attribute);
+
+
         //return true;
         return redirect('/admin/attribute');
     }
@@ -119,4 +107,18 @@ class AttributeController extends Controller {
         return redirect('/admin/attribute');
     }
 
+
+    private function _saveAttributeSelect($selects,$attribute) {
+        if(count($selects) > 0) {
+            foreach ($selects as $id => $select) {
+                $select['attribute_id'] = $attribute->id;
+                if (is_int($id)) {
+                    $attributeSelectValue = AttributeSelectValue::findorfail($id);
+                    $attributeSelectValue->update($select);
+                } else {
+                    AttributeSelectValue::create($select);
+                }
+            }
+        }
+    }
 }

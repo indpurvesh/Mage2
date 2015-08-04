@@ -29,5 +29,7 @@ Route::group(['prefix' => '/admin'], function() {
         Route::get('/', 'Admin\UsersController@dashboard');
         Route::resource("/entity", "Admin\EntityController");
         Route::resource("/attribute", "Admin\AttributeController");
+        Route::resource("/product", "Admin\ProductController");
+
     });
 });

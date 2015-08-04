@@ -17,7 +17,7 @@ class CreateAttributesTable extends Migration
             $table->integer('entity_id')->unsigned();
             $table->string('name');
             $table->string('key');
-            $table->enum('type',['text','select','checkbox','radio','file']);
+            $table->enum('type',['text','textarea','select','checkbox','radio','file']);
             $table->timestamps();
 
             $table->foreign('entity_id')

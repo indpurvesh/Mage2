@@ -23,13 +23,18 @@
         @include('admin._display_errors')
     </div>
 </div>
-<div class="panel panel-default attribute_select_option hide">
+<?php $class = (isset($attribute) && $attribute->AttributeSelectValue()->count()>0) ? "" : 'hide'; ?>
+<div class="panel panel-default attribute_select_option {{ $class }}">
+
     <div class="panel-body">
         <div class="container-fluid">
 
-            <?php if(isset($attribute) && $attribute->AttributeSelectValue()->count() >0): ?>
+
+            <?php if($class != "hide"): ?>
+
             <div class="attribute_key_value_row">
                 <?php foreach($attribute->AttributeSelectValue()->get() as $attributeSelectValue): ?>
+
                 <div class="row">
                     <div class="col-md-4 key">
                             <label>Key</label>
@@ -61,7 +66,6 @@
             <div class="add-button">
                 <button type="Add" class="btn btn-primary add_custom_button">Add </button>
             </div>
-            
             <?php  endif; ?>
         </div>
 
