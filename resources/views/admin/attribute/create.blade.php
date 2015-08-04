@@ -4,7 +4,7 @@
 <div class="content">
 	<h1>Attribute Add Form</h1>
 	<div class="col-md-5 product_add_form">
-        {!! Form::open(array('url' => url('admin/entity'))) !!}
+        {!! Form::open(array('url' => url('admin/attribute'))) !!}
 
             @include('admin.attribute._edit')
 
@@ -18,11 +18,11 @@
     <div class="row ">
        <div class="col-md-4 key">
                <label>Key</label>
-               <input type="text" name="select[__UNIQUE__][key][]" class="form-control" placeholder="Key..">
+               <input type="text" name="select[__UNIQUE__][key]" class="form-control" placeholder="Key..">
        </div>
        <div class="col-md-4 value">
            <label>Value</label>
-           <input type="text" name="select[__UNIQUE__][value][]" class="form-control" placeholder="Value">
+           <input type="text" name="select[__UNIQUE__][value]" class="form-control" placeholder="Value">
        </div>
        <div class="col-md-4 delete">
            <label>&nbsp;</label>

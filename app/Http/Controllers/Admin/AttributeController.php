@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Admin\Attribute;
 use App\Admin\Entity;
 use Illuminate\Http\Request;
-
+use App\Admin\AttributeSelectValue;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -45,7 +45,19 @@ class AttributeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attribute = Attribute::create($request->all());
+        $selects = $request->get('select');
+        foreach ($selects as  $key => $select) {
+            $select['attribute_id'] = $attribute->id;
+           if(is_int($key)) {
+               //update here 
+           } else {
+               
+               AttributeSelectValue::create($select);
+           }
+        }
+        //return true;
+        return redirect('/admin/attribute');
     }
 
     /**

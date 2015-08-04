@@ -31,11 +31,11 @@
                 <div class="row">
                     <div class="col-md-4 key">
                             <label>Key</label>
-                            <input type="text" name="select[{{ $attributeKey }}][key][]" class="form-control" placeholder="Key..">
+                            <input type="text" name="select[{{ $attributeKey }}][key]" class="form-control" placeholder="Key..">
                     </div>
                     <div class="col-md-4 value">
                         <label>Value</label>
-                        <input type="text" name="select[{{ $attributeKey }}][value][]" class="form-control" placeholder="Value">
+                        <input type="text" name="select[{{ $attributeKey }}][value]" class="form-control" placeholder="Value">
                     </div>
                     <div class="col-md-4 delete">
                         <label>&nbsp;</label>
