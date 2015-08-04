@@ -10,4 +10,9 @@ class Entity extends Model
             'name',
             'key'
 	];
+    
+    
+    public function attributes() {
+        return $this->hasMany('App\Admin\Attribute');
+    }
 }

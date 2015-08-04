@@ -12,4 +12,7 @@ class AttributeSelectValue extends Model
             'value'
 	];
 
+    public function attribute() {
+        return $this->belongsTo("App\Admin\Attribute");
+    }
 }

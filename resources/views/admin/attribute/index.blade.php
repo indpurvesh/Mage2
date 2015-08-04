@@ -20,6 +20,8 @@
 	    	<tr>
 	    		<th>Id</th>
 	    		<th>name</th>
+	    		<th>key</th>
+	    		<th>type</th>
 	    		<th>Edit</th>
 	    		<th>Delete</th>
 	    	</tr>
@@ -27,6 +29,8 @@
 	    	<tr>
 	   			<td>{{ $attribute->id }}</td>
 	   			<td>{{ $attribute->name }}</td>
+	   			<td>{{ $attribute->key }}</td>
+	   			<td>{{ $attribute->type }}</td>
 	   			<td><a href="{{ route('admin.attribute.edit',$attribute->id) }}" title="Edit">Edit</a></td>
 	   			<td>
 	   				{!! Form::open(array('route' => array('admin.attribute.destroy', $attribute->id),
