@@ -8,8 +8,8 @@
                     {!!  Form::text('name',null,array('class'=>'form-control', 'autofocus' => true))  !!}
                 </div>
 
-                @foreach($product->attribute() as $attribute)
-                    {{ AdminAttribute::renderAttribute($attribute) }}
+                @foreach($entity->attributes()->get() as $attribute)
+                    {!! AdminAttribute::renderAttribute($attribute) !!}
                 @endforeach
 
                 @include('admin._display_errors')

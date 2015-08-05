@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Admin\Product;
+use App\Admin\Entity;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -28,8 +29,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $product = new Product();
-        return view('admin.product.create')->with('product' , $product);
+        $entity = Entity::Product()->get()->first();
+        return view('admin.product.create')->with('entity' , $entity);
     }
 
     /**
@@ -40,7 +41,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
     }
 
     /**

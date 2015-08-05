@@ -12,6 +12,10 @@ class Entity extends Model
 	];
     
     
+    public function scopeProduct() {
+        return $this->where('unique_key','product');
+    }
+    
     public function attributes() {
         return $this->hasMany('App\Admin\Attribute');
     }
