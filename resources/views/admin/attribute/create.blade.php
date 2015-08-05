@@ -18,7 +18,7 @@
     <div class="row ">
        <div class="col-md-4 key">
                <label>Key</label>
-               <input type="text" name="select[__UNIQUE__][key]" class="form-control" placeholder="Key..">
+               <input type="text" name="select[__UNIQUE__][unique_key]" class="form-control" placeholder="Key..">
        </div>
        <div class="col-md-4 value">
            <label>Value</label>

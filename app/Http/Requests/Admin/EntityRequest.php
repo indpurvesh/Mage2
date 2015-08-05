@@ -25,7 +25,7 @@ class EntityRequest extends Request
     {
         return [
             'name' => 'required|max:255',
-            'key' => 'required|unique:entities',
+            'unique_key' => 'required|unique:entities',
            
         ];
     }

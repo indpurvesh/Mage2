@@ -1,11 +1,11 @@
 <div class="form-group">
     {!!  Form::label('name', 'Name')  !!}
-    {!!  Form::text('name',null,array('class'=>'form-control', 'autofocus' => true));  !!}
+    {!!  Form::text('name',null,array('class'=>'form-control', 'autofocus' => true))  !!}
 </div>
 
 <div class="form-group">
-    {!!  Form::label('key', 'Key')  !!}
-    {!!  Form::text('key',null,array('class'=>'form-control'));  !!}
+    {!!  Form::label('unique_key', 'Key')  !!}
+    {!!  Form::text('unique_key',null,array('class'=>'form-control'))  !!}
 </div>
 
 

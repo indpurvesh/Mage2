@@ -29,7 +29,7 @@
 	    	<tr>
 	   			<td>{{ $attribute->id }}</td>
 	   			<td>{{ $attribute->name }}</td>
-	   			<td>{{ $attribute->key }}</td>
+	   			<td>{{ $attribute->unique_key }}</td>
 	   			<td>{{ $attribute->type }}</td>
 	   			<td><a href="{{ route('admin.attribute.edit',$attribute->id) }}" title="Edit">Edit</a></td>
 	   			<td>

@@ -15,7 +15,7 @@ class CreateTableAttributeSelectValues extends Migration
         Schema::create('attribute_select_values', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('attribute_id')->unsigned();
-            $table->string('key');
+            $table->string('unique_key');
             $table->string('value');
             $table->timestamps();
 

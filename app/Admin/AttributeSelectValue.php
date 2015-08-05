@@ -8,7 +8,7 @@ class AttributeSelectValue extends Model
 {
       protected $fillable = [
             'attribute_id',
-            'key',
+            'unique_key',
             'value'
 	];
 

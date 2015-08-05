@@ -6,8 +6,8 @@
         </div>
 
         <div class="form-group">
-            {!!  Form::label('key', 'Key')  !!}
-            {!!  Form::text('key',null,array('class'=>'form-control'))  !!}
+            {!!  Form::label('unique_key', 'Key')  !!}
+            {!!  Form::text('unique_key',null,array('class'=>'form-control'))  !!}
         </div>
 
 
@@ -38,7 +38,7 @@
                 <div class="row">
                     <div class="col-md-4 key">
                             <label>Key</label>
-                            <input type="text" name="select[{{ $attributeSelectValue->id }}][key]" 
+                            <input type="text" name="select[{{ $attributeSelectValue->id }}][unique_key]"
                                    value="{{ $attributeSelectValue->key }}"
                                    class="form-control" placeholder="Key..">
                     </div>

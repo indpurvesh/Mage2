@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class HelperServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -23,8 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
 
+        foreach (glob(app_path().'/Helpers/Admin/*.php') as $filename){
+            require_once($filename);
 
+        }
     }
 }

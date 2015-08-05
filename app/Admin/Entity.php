@@ -8,7 +8,7 @@ class Entity extends Model
 {
     protected $fillable = [
             'name',
-            'key'
+            'unique_key'
 	];
     
     
