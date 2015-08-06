@@ -42,7 +42,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $entity = Entity::Product()->get()->first();
+        
         $product = Product::create($request->all());
 
         $attributes = $request->get('attribute');
@@ -51,14 +51,13 @@ class ProductController extends Controller
 
             $model = $this->getAttributeValueModel($attribute);
 
-            $attributeValue['entity_id'] = $entity->id;
+            $attributeValue['entity_id'] = $product->id;
             $attributeValue['attribute_id'] = $id;
 
-            var_dump($attributeValue);die;
             $model->create($attributeValue);
         }
-        return $product;
-        return $request->all();
+       
+        return redirect("/admin/product");
     }
 
     /**
@@ -80,7 +79,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+         $entity = Entity::Product()->get()->first();
+         $product = Product::findorfail($id);
+        return view('admin.product.edit')->with('entity' , $entity)
+                                            ->with('product', $product);
     }
 
     /**
@@ -92,7 +94,27 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+        $product->update($request->all());
+        
+        $attributes = $request->get('attribute');
+        foreach($attributes as $id => $attributeValue) {
+            $attribute = Attribute::findorfail($id);
+
+            $model = $this->getAttributeValueModel($attribute);
+            //$tmpModel = clone($model);
+                    $attributeValue['entity_id'] = $product->id;
+            $attributeValue['attribute_id'] = $id;
+
+            if($model->where('entity_id', '=' , $product->id)->where('attribute_id','=',$id)->get()->count() > 0) {
+                //return $tmpModel;
+                $model->update($attributeValue);
+            } else {
+                $model->create($attributeValue);
+            }
+        }
+       
+        return redirect("/admin/product");
     }
 
     /**
