@@ -39,7 +39,7 @@
                     <div class="col-md-4 key">
                             <label>Key</label>
                             <input type="text" name="select[{{ $attributeSelectValue->id }}][unique_key]"
-                                   value="{{ $attributeSelectValue->key }}"
+                                   value="{{ $attributeSelectValue->unique_key }}"
                                    class="form-control" placeholder="Key..">
                     </div>
                     <div class="col-md-4 value">

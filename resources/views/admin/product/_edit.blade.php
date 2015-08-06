@@ -9,7 +9,7 @@
                 </div>
 
                 @foreach($entity->attributes()->get() as $attribute)
-                    {!! AdminAttribute::renderAttribute($attribute) !!}
+                    {!! AdminAttribute::renderAttribute($attribute, $product->id) !!}
                 @endforeach
 
                 @include('admin._display_errors')

@@ -24,7 +24,7 @@
                 </ul>
             </div>
             <div class="col-md-10">
-                @include('admin.product._edit')
+                @include('admin.product._edit',['isEdit', false])
             </div>
         </div>
         {!! Form::close() !!}

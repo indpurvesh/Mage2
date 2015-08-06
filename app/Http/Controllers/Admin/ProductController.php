@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin\Product;
 use App\Admin\Entity;
+use App\Admin\Attribute;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -41,6 +42,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $entity = Entity::Product()->get()->first();
+        $product = Product::create($request->all());
+
+        $attributes = $request->get('attribute');
+        foreach($attributes as $id => $attributeValue) {
+            $attribute = Attribute::findorfail($id);
+
+            $model = $this->getAttributeValueModel($attribute);
+
+            $attributeValue['entity_id'] = $entity->id;
+            $attributeValue['attribute_id'] = $id;
+
+            var_dump($attributeValue);die;
+            $model->create($attributeValue);
+        }
+        return $product;
         return $request->all();
     }
 

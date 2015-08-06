@@ -1,41 +1,36 @@
 @extends('admin.master')
- 
+
 @section('content')
+	<div class="content">
+		<h1>Product Add Form</h1>
+		{!! Form::model($product,array('method' => 'PATCH',
+                                                 'url' => url('/admin/product',$product->id)) ) !!}
 
-<div class="content">
-	<h1>Entity Edit Form</h1>
-		
-	<div class="product_add_form">
-		{!! Form::model($attribute,array('method' => 'PATCH', 
-                                                 'url' => url('/admin/attribute',$attribute->id)) ) !!}
-		
-		 @include('admin.attribute._edit')
-		
-		{!! Form::hidden('id') !!}
-		
+
+		<div class=" container-fluid row">
+			<div class="pull-right">
+				<div class="form-group">
+					{!!  Form::button('Save',array(	'onclick' => 'jQuery(this).parents("form:first").submit()',
+                    'class' => 'btn btn-primary' ))  !!}
+				</div>
+				<br/>
+			</div>
+		</div>
+		<div class="container-fluid">
+
+			<div class="col-md-2">
+				<ul class="nav nav-tabs nav-pills nav-stacked">
+					<li><a href="#tab1" data-toggle="tab">Tab 1</a></li>
+					<li><a href="#tab2" data-toggle="tab">Tab 2</a></li>
+					<li><a href="#tab3" data-toggle="tab">Tab 3</a></li>
+				</ul>
+			</div>
+			<div class="col-md-10">
+				@include('admin.product._edit')
+			</div>
+		</div>
 		{!! Form::close() !!}
-	
 	</div>
-</div>
 
 
-<div class='custom_attribute_row hide'>
-	<div class="row ">
-		<div class="col-md-4 key">
-			<label>Key</label>
-			<input type="text" name="select[__UNIQUE__][key]" class="form-control" placeholder="Key..">
-		</div>
-		<div class="col-md-4 value">
-			<label>Value</label>
-			<input type="text" name="select[__UNIQUE__][value]" class="form-control" placeholder="Value">
-		</div>
-		<div class="col-md-4 delete">
-			<label>&nbsp;</label>
-			<a href="" class="btn btn-danger form-control">Delete</a>
-		</div>
-	</div>
-</div>
 @endsection
-
-
-

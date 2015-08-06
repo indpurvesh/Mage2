@@ -30,6 +30,8 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 */
 namespace App\Http\Controllers;
 
+use App\Admin\ProductsTextValue;
+use App\Admin\ProductsVarcharValue;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -37,4 +39,13 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 abstract class Controller extends BaseController
 {
     use DispatchesJobs, ValidatesRequests;
+
+    public function getAttributeValueModel($attribute) {
+        if($attribute->type == "textarea") {
+            return new ProductsTextValue();
+        }
+        if($attribute->type == "text" || $attribute->type == "select" || $attribute->type == "radio" || $attribute->type == "checkbox") {
+            return new ProductsVarcharValue();
+        }
+    }
 }

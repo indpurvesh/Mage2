@@ -21,7 +21,7 @@ class CreateProductsTextValues extends Migration
         });
          Schema::table('products_text_values',function(Blueprint $table){
                  $table->foreign('entity_id')
-                    ->references('id')->on('entities')->onDelete('cascade');;
+                    ->references('id')->on('products')->onDelete('cascade');;
 
                   $table->foreign('attribute_id')
                     ->references('id')->on('attributes')->onDelete('cascade');;
