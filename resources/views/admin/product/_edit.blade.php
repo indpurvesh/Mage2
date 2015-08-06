@@ -7,7 +7,7 @@
                     {!!  Form::label('name', 'Name')  !!}
                     {!!  Form::text('name',null,array('class'=>'form-control', 'autofocus' => true))  !!}
                 </div>
-                {{ /** **/ $id = (isset($product->id) ? $product->id : null ) }}
+                <?php  $id = (isset($product->id) ? $product->id : null ); ?>
                 @foreach($entity->attributes()->get() as $attribute)
                     {!! AdminAttribute::renderAttribute($attribute, $id) !!}
                 @endforeach
