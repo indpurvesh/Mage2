@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 
 use App\User;
+use App\Admin\Entity;
 
 class UserTableSeeder extends Seeder
 {
@@ -18,5 +19,8 @@ class UserTableSeeder extends Seeder
             'email' => "ind.purvesh@gmail.com",
             'password' => bcrypt("admin123"),
         ]);
+         
+         Entity::create(['name' => 'Product', 'unique_key' => 'product']);
+         Entity::create(['name' => 'Category', 'unique_key' => 'category']);
     }
 }
