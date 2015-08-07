@@ -14,12 +14,6 @@ class ExampleTest extends TestCase
     public function testBasicExample()
     {
         $this->visit('/')
-            ->see('Mage2');
+             ->see('Laravel 5');
     }
-
-    public function testAdminRoute()
-    {
-        $this->visit('/admin')->assertRedirectedTo('/admin/login');
-    }
-
 }
