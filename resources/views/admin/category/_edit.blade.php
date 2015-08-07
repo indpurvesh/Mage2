@@ -19,10 +19,15 @@
 </div>
 
 <div class="form-group">
+    <?php if(isset($category->image_path) && $category->image_path != "" ) { ?>
+        <div class="image_list">
+            <img src="{{ url($category->image_path) }}" width="150" alt="{{ $category->name }}" />
+        </div>
+    <?php } ?>
+    
     {!!  Form::label('file', 'Image')  !!}
     {!!  Form::file('file',null,array('class'=>'form-control'))  !!}
 </div>
-
 
 <div class="form-group">
     {!!  Form::label('status', 'Status')  !!}

@@ -3,10 +3,10 @@
 @section('content')
 
     <div class="content">
-        <h1>Entity Edit Form</h1>
+        <h1>Category Edit Form</h1>
 
         <div class="add_form">
-            {!! Form::model($category,array('method' => 'PATCH', 'url' => url('/admin/category',$category->id)) ) !!}
+            {!! Form::model($category,array('method' => 'PATCH', 'files' => true ,'url' => url('/admin/category',$category->id)) ) !!}
 
             @include('admin.category._edit')
 
