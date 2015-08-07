@@ -34,6 +34,10 @@
     {!!  Form::select('status', [ 1 => 'Yes', 0 => 'No'], null,array('class'=>'form-control'))  !!}
 </div>
 
+ <?php  $id = (isset($category->id) ? $category->id : null ); ?>
+@foreach($entity->attributes()->get() as $attribute)
+    {!! AdminAttribute::renderCategoryAttribute($attribute, $id) !!}
+@endforeach
 
 @include('admin._display_errors')
 
@@ -41,3 +45,4 @@
     {!!  Form::button('Save',array(	'onclick' => 'jQuery(this).parents("form:first").submit()', 
     'class' => 'btn btn-primary' ))  !!}
 </div>
+

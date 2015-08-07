@@ -5,19 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Admin\CategoryRequest;
 use App\Admin\Category;
 use Illuminate\Http\Request;
-
+use App\Admin\Entity;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class CategoryController extends Controller
-{
+class CategoryController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-    public function index()
-    {
+    public function index() {
         $categories = Category::all();
         return view('admin.category.index')->with('categories', $categories);
     }
@@ -27,10 +26,12 @@ class CategoryController extends Controller
      *
      * @return Response
      */
-    public function create()
-    {
+    public function create() {
         $categories = Category::lists('name', 'id');
-        return view('admin.category.create')->with('categories', $categories);
+        $entity = Entity::Category()->get()->first();
+        
+        return view('admin.category.create')->with('categories', $categories)
+                        ->with('entity', $entity);
     }
 
     /**
@@ -39,14 +40,19 @@ class CategoryController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function store(CategoryRequest $request)
-    {
-
+    public function store(CategoryRequest $request) {
+        //@tosdo Attribute Save
         $category = Category::create($request->all());
 
-        if($request->file('file') != "") {
+        if ($request->file('file') != "") {
             $category->image_path = $this->uploadImage($request->file('file'), $for = 'categories');
         }
+        
+        //Saving Attributes
+        $attributes = $request->get('attribute');
+        $this->saveAttribute($attributes, $categories->id);
+        
+        
         $category->slug = str_slug($request->get('name'));
         //update File Path and Slug
         $category->save();
@@ -60,8 +66,7 @@ class CategoryController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -71,13 +76,14 @@ class CategoryController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         $category = Category::findorfail($id);
         $categories = Category::lists('name', 'id');
+        $entity = Entity::Category()->get()->first();
         return view('admin.category.edit')
-            ->with('categories', $categories)
-            ->with('category', $category);
+                        ->with('categories', $categories)
+                        ->with('category', $category)
+                        ->with('entity', $entity);
     }
 
     /**
@@ -87,14 +93,18 @@ class CategoryController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update(Request $request, $id)
-    {
-         $category = Category::findorfail($id);
-         $category->update($request->all());
+    public function update(Request $request, $id) {
+        $category = Category::findorfail($id);
+        $category->update($request->all());
 
-        if($request->file('file') != "") {
+        if ($request->file('file') != "") {
             $category->image_path = $this->uploadImage($request->file('file'), $for = 'categories');
         }
+        
+           //Saving Attributes
+        $attributes = $request->get('attribute');
+        $this->saveAttribute($attributes, $id);
+        
         $category->slug = str_slug($request->get('name'));
         //update File Path and Slug
         $category->save();
@@ -108,9 +118,9 @@ class CategoryController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         Category::destroy($id);
         return redirect('/admin/category');
     }
+
 }

@@ -16,6 +16,10 @@ class Entity extends Model
         return $this->where('unique_key','product');
     }
     
+    public function scopeCategory() {
+        return $this->where('unique_key','category');
+    }
+    
     public function attributes() {
         return $this->hasMany('App\Admin\Attribute');
     }
