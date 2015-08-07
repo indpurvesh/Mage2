@@ -70,26 +70,31 @@ abstract class Controller extends BaseController {
      * 
      * 
      */
-    public function saveAttribute($attributes , $entityId = null) {
+
+    public function saveAttribute($attributes, $entityId = null) {
         /*
-        foreach ($attributes as $id => $attributeValue) {
+          foreach ($attributes as $id => $attributeValue) {
+          if ($attributeValue == "") {
+          continue;
+          }
+          $attribute = Attribute::findorfail($id);
+
+          $model = $this->getAttributeValueModel($attribute);
+
+          $attributeValue['entity_id'] = $product->id;
+          $attributeValue['attribute_id'] = $id;
+
+          $model->create($attributeValue);
+          }
+         * 
+         */
+
+
+        foreach ($attributes as $attributeId => $attributeValue) {
             if ($attributeValue == "") {
                 continue;
             }
-            $attribute = Attribute::findorfail($id);
 
-            $model = $this->getAttributeValueModel($attribute);
-
-            $attributeValue['entity_id'] = $product->id;
-            $attributeValue['attribute_id'] = $id;
-
-            $model->create($attributeValue);
-        }
-         * 
-         */
-        
-        
-        foreach($attributes as $attributeId => $attributeValue) {
             $attribute = Attribute::findorfail($attributeId);
 
             $model = $this->getAttributeValueModel($attribute);
@@ -97,7 +102,7 @@ abstract class Controller extends BaseController {
             $attributeValue['entity_id'] = $entityId;
             $attributeValue['attribute_id'] = $attributeId;
 
-            if($model->where('entity_id', '=' , $entityId)->where('attribute_id','=',$attributeId)->get()->count() > 0) {
+            if ($model->where('entity_id', '=', $entityId)->where('attribute_id', '=', $attributeId)->get()->count() > 0) {
                 //return $tmpModel;
                 $model->update($attributeValue);
             } else {
