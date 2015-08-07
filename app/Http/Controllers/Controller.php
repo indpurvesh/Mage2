@@ -64,7 +64,7 @@ abstract class Controller extends BaseController
 
 
         $path = base_path() . '/public/images/catalog/' . $for . "/" . $random . "/";
-        $relativePath = '/public/images/catalog/' . $for . "/" . $random . "/";
+        $relativePath = '/images/catalog/' . $for . "/" . $random . "/";
         //Upload Images
         $imageName = $image->getClientOriginalName();
         $image->move($path, $imageName);

@@ -44,7 +44,9 @@ class CategoryController extends Controller
 
         $category = Category::create($request->all());
 
-        $category->image_path = $this->uploadImage($request->file('file'), $for = 'categories');
+        if($request->file('file') != "") {
+            $category->image_path = $this->uploadImage($request->file('file'), $for = 'categories');
+        }
         $category->slug = str_slug($request->get('name'));
         //update File Path and Slug
         $category->save();
@@ -87,7 +89,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $category = Category::findorfail($id);
+         $category->update($request->all());
+
+        if($request->file('file') != "") {
+            $category->image_path = $this->uploadImage($request->file('file'), $for = 'categories');
+        }
+        $category->slug = str_slug($request->get('name'));
+        //update File Path and Slug
+        $category->save();
+
+        return redirect('/admin/category');
     }
 
     /**
@@ -98,6 +110,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::destroy($id);
+        return redirect('/admin/category');
     }
 }
