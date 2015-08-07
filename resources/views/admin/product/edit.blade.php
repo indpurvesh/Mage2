@@ -20,9 +20,10 @@
 
 			<div class="col-md-2">
 				<ul class="nav nav-tabs nav-pills nav-stacked">
-					<li><a href="#tab1" data-toggle="tab">Tab 1</a></li>
-					<li><a href="#tab2" data-toggle="tab">Tab 2</a></li>
-					<li><a href="#tab3" data-toggle="tab">Tab 3</a></li>
+					<li><a href="#tab1" data-toggle="tab">Basics</a></li>
+					<li><a href="#tab2" data-toggle="tab">Advanced Inventory</a></li>
+					<li><a href="#tab3" data-toggle="tab">Related Products</a></li>
+					s
 				</ul>
 			</div>
 			<div class="col-md-10">

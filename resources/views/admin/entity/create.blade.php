@@ -3,7 +3,8 @@
 @section('content')
 <div class="content">
 	<h1>Entity Add Form</h1>
-	<div class="col-md-5 product_add_form">
+
+    <div class="col-md-5">
             {!! Form::open(array('files' => 'true', 'url' => url('admin/entity'))) !!}
             @include('admin.entity._edit')
             {!! Form::close() !!}

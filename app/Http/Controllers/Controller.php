@@ -32,6 +32,7 @@ namespace App\Http\Controllers;
 
 use App\Admin\ProductsTextValue;
 use App\Admin\ProductsVarcharValue;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -47,5 +48,28 @@ abstract class Controller extends BaseController
         if($attribute->type == "text" || $attribute->type == "select" || $attribute->type == "radio" || $attribute->type == "checkbox") {
             return new ProductsVarcharValue();
         }
+
+        return false;
+    }
+
+
+    /*
+     * @param \Symfony\Component\HttpFoundation\File\UploadedFile   $image
+     *
+     */
+    public function uploadImage(UploadedFile $image, $for = 'products')
+    {
+
+        $random = implode('/', str_split(substr(str_shuffle(implode("", range('a', 'z'))), -3)));
+
+
+        $path = base_path() . '/public/images/catalog/' . $for . "/" . $random . "/";
+        $relativePath = '/public/images/catalog/' . $for . "/" . $random . "/";
+        //Upload Images
+        $imageName = $image->getClientOriginalName();
+        $image->move($path, $imageName);
+
+        return $relativePath . $imageName;
+
     }
 }

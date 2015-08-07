@@ -19,23 +19,25 @@
           <li><a href="{!! @url('admin/entity') !!}" title="Entity">Entity</a></li>
           <li><a href="{!! @url('admin/attribute') !!}" title="Attribute">Attribute</a></li>
           <li><a href="{!! @url('admin/product') !!}" title="Product">Product</a></li>
+        <li><a href="{!! @url('admin/category') !!}" title="Category">Category</a></li>
+
       </ul>
-      
+
       <ul class="nav navbar-nav navbar-right">
       	<li role="presentation" class="dropdown">
       		<a href="{!! url('/customer/account') !!}" title="My Account"  class="dropdown-toggle" data-toggle="dropdown" >
       			My Account <span class="caret"></span>
       		</a>
-      
-      		<ul class="dropdown-menu">
+
+          <ul class="dropdown-menu">
       			<li ><a href="{!! url('/customer/account') !!}" title="My Account">My Account</a></li>
       			<li><a href="{!! url('/customer/settings') !!}">Settings</a></li>
       			<li><a href="{!! url('/admin/logout') !!}">Logout</a></li>
       		</ul>
       	</li>
-      	
+
       </ul>
-    
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

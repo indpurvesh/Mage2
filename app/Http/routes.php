@@ -30,6 +30,7 @@ Route::group(['prefix' => '/admin'], function() {
         Route::resource("/entity", "Admin\EntityController");
         Route::resource("/attribute", "Admin\AttributeController");
         Route::resource("/product", "Admin\ProductController");
+        Route::resource("/category", "Admin\CategoryController");
 
     });
 });
