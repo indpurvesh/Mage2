@@ -14,18 +14,18 @@ class CreateProductsTextValues extends Migration
     {
         Schema::create('products_text_values', function (Blueprint $table) {
             $table->increments('id');
-                $table->integer('entity_id')->unsigned();
-                $table->integer('attribute_id')->unsigned();
+                $table->integer('entity_id')->unsigned()->index();
+                $table->integer('attribute_id')->unsigned()->index();
                 $table->text('value');
                 $table->timestamps();
         });
          Schema::table('products_text_values',function(Blueprint $table){
-                 $table->foreign('entity_id')
-                    ->references('id')->on('products')->onDelete('cascade');;
+             $table->foreign('entity_id')
+                ->references('id')->on('products')->onDelete('cascade');;
 
-                  $table->foreign('attribute_id')
-                    ->references('id')->on('attributes')->onDelete('cascade');;
-            }); 
+              $table->foreign('attribute_id')
+                ->references('id')->on('attributes')->onDelete('cascade');;
+        });
     }
 
     /**
