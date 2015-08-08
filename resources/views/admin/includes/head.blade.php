@@ -14,6 +14,7 @@
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="{!! asset('resources/assets/js/libs/select2.min.js') !!}"></script>
+<script src="{!! asset('js/libs/jquery-sortable.js') !!}"></script>
 <script src="{!! url('js/main.js') !!} "></script>
 
 <!--  For Production use gulp css/JS -->

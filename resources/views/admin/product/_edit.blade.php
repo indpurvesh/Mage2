@@ -7,7 +7,61 @@
                     {!!  Form::label('name', 'Name')  !!}
                     {!!  Form::text('name',null,array('class'=>'form-control', 'autofocus' => true))  !!}
                 </div>
-                <?php  $id = (isset($product->id) ? $product->id : null ); ?>
+
+                <div class="form-group">
+                    {!!  Form::label('slug', 'Slug')  !!}
+                    {!!  Form::text('slug',null,array('class'=>'form-control', 'disabled' => true))  !!}
+                </div>
+
+                <div class="form-group">
+                    {!!  Form::label('sku', 'Sku')  !!}
+                    {!!  Form::text('sku',null,array('class'=>'form-control'))  !!}
+                </div>
+
+                <div class="form-group">
+                    {!!  Form::label('brief_description', 'Brief Description')  !!}
+                    {!!  Form::text('brief_description',null,array('class'=>'form-control'))  !!}
+                </div>
+
+                <div class="form-group">
+                    {!!  Form::label('description', 'Description')  !!}
+                    {!!  Form::textarea('description',null,array('class'=>'form-control'))  !!}
+                </div>
+                <div class="image_list">
+
+                    <ol class="sortable_product_images">
+
+                        <li>
+                            <img src="http://placehold.it/150x150">
+                        </li>
+                        <li>
+                            <img src="http://placehold.it/150x150">
+                        </li>
+                        <li>
+                            <img src="http://placehold.it/150x150">
+                        </li>
+
+                    </ol>
+
+
+                </div>
+
+                <div class="form-group">
+                    {!!  Form::label('qty', 'Qty')  !!}
+                    {!!  Form::text('qty',null,array('class'=>'form-control'))  !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('manage_stock', 'Manage Stock') !!}
+                    {!!  Form::select('manage_stock',[1 => 'Yes', 0 => 'No'], null, ['class' => 'form-control']) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('low_stock_notification', 'Low Stock Notification') !!}
+                    {!!  Form::select('low_stock_notification',[0 => 'No', 1 => 'Yes'], null, ['class' => 'form-control']) !!}
+                </div>
+
+            <?php  $id = (isset($product->id) ? $product->id : null ); ?>
                 @foreach($entity->attributes()->get() as $attribute)
                     {!! AdminAttribute::renderProductAttribute($attribute, $id) !!}
                 @endforeach

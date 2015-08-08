@@ -72,23 +72,10 @@ abstract class Controller extends BaseController {
      */
 
     public function saveAttribute($attributes, $entityId = null) {
-        /*
-          foreach ($attributes as $id => $attributeValue) {
-          if ($attributeValue == "") {
-          continue;
-          }
-          $attribute = Attribute::findorfail($id);
 
-          $model = $this->getAttributeValueModel($attribute);
-
-          $attributeValue['entity_id'] = $product->id;
-          $attributeValue['attribute_id'] = $id;
-
-          $model->create($attributeValue);
-          }
-         * 
-         */
-
+        if (count($attributes) <= 0) {
+            return true;
+        }
 
         foreach ($attributes as $attributeId => $attributeValue) {
             if ($attributeValue == "") {

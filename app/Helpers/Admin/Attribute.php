@@ -21,12 +21,13 @@ class Attribute
             case 'text':
 
                 if ($entityId > 0) {
-                    $value = ProductsVarcharValue::where('entity_id', '=',$entityId)->where('attribute_id', '=' ,$attribute->id)->get()->first();
+                    $model = ProductsVarcharValue::where('entity_id', '=', $entityId)->where('attribute_id', '=', $attribute->id)->get()->first();
+                    $value = (isset($model->value)) ? $model->value : "";
                 }
 
                 $html .= "<div class='form-group'>";
                 $html .= "<label>{$attribute->name}</label>";
-                $html .= "<input type='text' name='attribute[{$attribute->id}][value]' vallue='{$value}' class='form-control' />";
+                $html .= "<input type='text' name='attribute[{$attribute->id}][value]' value='{$value}' class='form-control' />";
                 $html .= "</div>";
                 break;
             case 'textarea':
@@ -73,9 +74,6 @@ class Attribute
     
     public static function renderCategoryAttribute($attribute, $entityId = 0)
     {
-           
-          
-
         $value = "";
 
         $html = "";
@@ -83,7 +81,8 @@ class Attribute
             case 'text':
 
                 if ($entityId > 0) {
-                    $value =  CategoriesVarcharValue::where('entity_id', '=',$entityId)->where('attribute_id', '=' ,$attribute->id)->get()->first()->value;   
+                    $model = CategoriesVarcharValue::where('entity_id', $entityId)->where('attribute_id', '=', $attribute->id)->get()->first();
+                    $value = (isset($model->value)) ? $model->value : "";
                 }
 
                 $html .= "<div class='form-group'>";

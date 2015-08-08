@@ -23,7 +23,6 @@
 					<li><a href="#tab1" data-toggle="tab">Basics</a></li>
 					<li><a href="#tab2" data-toggle="tab">Advanced Inventory</a></li>
 					<li><a href="#tab3" data-toggle="tab">Related Products</a></li>
-					s
 				</ul>
 			</div>
 			<div class="col-md-10">

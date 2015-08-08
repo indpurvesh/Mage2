@@ -50,9 +50,9 @@ class CategoryController extends Controller {
         
         //Saving Attributes
         $attributes = $request->get('attribute');
-        $this->saveAttribute($attributes, $categories->id);
-        
-        
+        $this->saveAttribute($attributes, $category->id);
+
+
         $category->slug = str_slug($request->get('name'));
         //update File Path and Slug
         $category->save();

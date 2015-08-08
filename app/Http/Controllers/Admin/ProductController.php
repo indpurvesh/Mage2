@@ -28,6 +28,8 @@ class ProductController extends Controller {
      */
     public function create() {
         $entity = Entity::Product()->get()->first();
+
+
         return view('admin.product.create')->with('entity', $entity);
     }
 
@@ -41,6 +43,10 @@ class ProductController extends Controller {
 
         $product = Product::create($request->all());
         $this->saveAttribute($request->get('attribute'), $product->id);
+
+        $product->slug = str_slug($request->get('name'));
+        //update File Path and Slug
+        $product->save();
 
         return redirect("/admin/product");
     }
@@ -82,6 +88,12 @@ class ProductController extends Controller {
         $attributes = $request->get('attribute');
         $this->saveAttribute($attributes, $id);
 
+
+        if ($product->slug == "") {
+            $product->slug = str_slug($request->get('name'));
+            //update File Path and Slug
+            $product->save();
+        }
 
 
         return redirect("/admin/product");

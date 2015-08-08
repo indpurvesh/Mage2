@@ -3,7 +3,10 @@ var main = {
         var me = main;
         jQuery(document).on('click','.add_custom_button',me.addCustomButtonOnClick);
         jQuery(document).on('change','.attribute_type',me.attributeTypeOnChange);
+
+        jQuery('.sortable_product_images').sortable();
     },
+
     addCustomButtonOnClick: function(e) {
         e.preventDefault();
         var me = main;
