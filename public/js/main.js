@@ -3,8 +3,8 @@ var main = {
         var me = main;
         jQuery(document).on('click','.add_custom_button',me.addCustomButtonOnClick);
         jQuery(document).on('change','.attribute_type',me.attributeTypeOnChange);
-
-        jQuery('.sortable_product_images').sortable();
+        
+        //jQuery('.sortable_product_images').sortable({vertical:false});
     },
 
     addCustomButtonOnClick: function(e) {
@@ -32,7 +32,8 @@ var main = {
             jQuery('.attribute_select_option').removeClass('hide');
             me.addCustomButtonOnClick(e);
         }
-    }
+    },
+  
 }
 
 jQuery(document).ready(main.init);

@@ -29,19 +29,10 @@
                 </div>
                 <div class="image_list">
 
-                    <ol class="sortable_product_images">
-
-                        <li>
-                            <img src="http://placehold.it/150x150">
-                        </li>
-                        <li>
-                            <img src="http://placehold.it/150x150">
-                        </li>
-                        <li>
-                            <img src="http://placehold.it/150x150">
-                        </li>
-
-                    </ol>
+                    <div class='btn btn-default btn-file image glyphicon glyphicon-camera'>
+                       
+                        <input class="" name='file[gfdgdf]' type='file' value="" />
+                    </div>
 
 
                 </div>
@@ -69,7 +60,7 @@
                 @include('admin._display_errors')
             </div>
         </div>
-    </div>
+    </div> 
     <div class="tab-pane fade" id="tab2">
         Tab 2 content
     </div>
