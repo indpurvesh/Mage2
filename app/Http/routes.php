@@ -31,6 +31,8 @@ Route::group(['prefix' => '/admin'], function() {
         Route::resource("/attribute", "Admin\AttributeController");
         Route::resource("/product", "Admin\ProductController");
         Route::resource("/category", "Admin\CategoryController");
+        
+        Route::post('/product/uploadImage', "Admin\ProductController@uploadProductImage");
 
     });
 });

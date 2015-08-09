@@ -108,5 +108,17 @@ class ProductController extends Controller {
     public function destroy($id) {
         //
     }
+    
+    
+    public function uploadProductImage(Request $request) {
+        
+        
+        $relativePath = $this->uploadImage($request->file('file'), $for = 'product');
+        
+        return view('admin.product.upload-product-image')->with('imagePath', $relativePath)
+                                ->with('randomString', str_random(6));
+       
+        
+    }
 
 }

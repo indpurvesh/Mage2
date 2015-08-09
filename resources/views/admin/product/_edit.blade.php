@@ -27,13 +27,12 @@
                     {!!  Form::label('description', 'Description')  !!}
                     {!!  Form::textarea('description',null,array('class'=>'form-control'))  !!}
                 </div>
-                <div class="image_list">
-
-                    <div class='btn btn-default btn-file image glyphicon glyphicon-camera'>
-                       
-                        <input class="" name='file[gfdgdf]' type='file' value="" />
+                <div class="form-group image_list">
+                    <label>Product Images </label>
+                    <div class='image_file col-md-2'> 
+                        <div data-token="{{ csrf_token() }}" class='btn btn-default btn-file image glyphicon glyphicon-camera'>
+                        </div>
                     </div>
-
 
                 </div>
 

@@ -25,3 +25,11 @@
     cursor: inherit;
     display: block;
 }
+.image_list {
+    width: 100%;
+    float: left;
+}
+.image_list label {
+    width: 100%;
+    float: left;
+}
