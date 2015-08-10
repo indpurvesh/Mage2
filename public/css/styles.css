@@ -33,3 +33,7 @@
     width: 100%;
     float: left;
 }
+
+.product_image_delete:hover {
+    text-decoration: none;
+}
