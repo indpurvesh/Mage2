@@ -37,3 +37,23 @@
 .product_image_delete:hover {
     text-decoration: none;
 }
+
+/************START  FRONT END CSS  ********************/
+.carousel-inner .item {
+    min-height: 250px;
+}
+
+.carousel-control.right, .carousel-control.left {
+    background-image: none;
+}
+
+.light-blue-a100 {
+    background-color: #B3E5FC;
+}
+
+.orange-a400 {
+    background-color: #FFA726;
+}
+
+/************END  FRONT END CSS  ********************/
+

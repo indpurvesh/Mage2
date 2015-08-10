@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Front\CmsController@home');
+Route::get('/home', 'Front\CmsController@home');
 
 Route::group(['prefix' => '/admin'], function() {
 
