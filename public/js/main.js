@@ -6,6 +6,14 @@ var main = {
 
 
         jQuery(document).on('change', '.image_list .btn-file', me.productFileOnChange);
+
+
+        jQuery(document).on('click', '.product_image_delete',
+            function (e) {
+                e.preventDefault();
+                alert("@todo left Delete PRoduct Image")
+            });
+
         var uploader = new ss.SimpleUpload({
             button: jQuery('.image_list .btn-file'), 
             url: 'http://my.dev/admin/product/uploadImage', 

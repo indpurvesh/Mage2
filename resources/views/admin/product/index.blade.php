@@ -1,7 +1,6 @@
 @extends('admin.master')
  
 @section('content')
-
 <div class="content">
 	<h1>Product List</h1>
 	<hr/>
@@ -14,13 +13,12 @@
      @if ( !$products->count() )
         You have no Products
     @else
-
-    
 		<table class="table table-bordered table-hover">
 	    	<tr>
 	    		<th>Id</th>
 	    		<th>name</th>
-
+                <th>Sku</th>
+                <th>Slug</th>
 	    		<th>Edit</th>
 	    		<th>Delete</th>
 	    	</tr>
@@ -28,6 +26,8 @@
 	    	<tr>
 	   			<td>{{ $product->id }}</td>
 	   			<td>{{ $product->name }}</td>
+                <td> {{ $product->sku }}</td>
+                <td> {{ $product->slug }}</td>
 	   			<td><a href="{{ route('admin.product.edit',$product->id) }}" title="Edit">Edit</a></td>
 	   			<td>
 	   				{!! Form::open(array('route' => array('admin.product.destroy', $product->id),

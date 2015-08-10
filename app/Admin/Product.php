@@ -20,4 +20,10 @@ class Product extends Model
     public function Attribute() {
         return $this->hasMany('App\Admin\Attribute');
     }
+
+    public function Images()
+    {
+        return $this->hasMany('App\Admin\ProductsImage');
+    }
+
 }

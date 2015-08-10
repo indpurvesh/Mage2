@@ -29,6 +29,18 @@
                 </div>
                 <div class="form-group image_list">
                     <label>Product Images </label>
+
+                    <?php  $id = (isset($product->id) ? $product->id : null); ?>
+                    @foreach($product->images()->get() as $productImage)
+                        <div class="upload_image_preview col-md-2">
+                            <a href="" class="glyphicon glyphicon-remove product_image_delete pull-right">&nbsp;</a>
+                            <img class="img-responsive" width="200" src="{{ $productImage->path }}"/>
+                            <input type="hidden" name="productImage[{{ $productImage->id }}]"
+                                   value="{{ $productImage->path}}"/>
+                        </div>
+                    @endforeach
+
+                    <?php ?>
                     <div class='image_file col-md-2'> 
                         <div data-token="{{ csrf_token() }}" class='btn btn-default btn-file image glyphicon glyphicon-camera'>
                         </div>
@@ -42,6 +54,11 @@
                 </div>
 
                 <div class="form-group">
+                    {!!  Form::label('price', 'Price')  !!}
+                    {!!  Form::text('price',null,array('class'=>'form-control'))  !!}
+                </div>
+
+                <div class="form-group">
                     {!! Form::label('manage_stock', 'Manage Stock') !!}
                     {!!  Form::select('manage_stock',[1 => 'Yes', 0 => 'No'], null, ['class' => 'form-control']) !!}
                 </div>
@@ -51,7 +68,7 @@
                     {!!  Form::select('low_stock_notification',[0 => 'No', 1 => 'Yes'], null, ['class' => 'form-control']) !!}
                 </div>
 
-            <?php  $id = (isset($product->id) ? $product->id : null ); ?>
+                <?php  $id = (isset($product->id) ? $product->id : null ); ?>
                 @foreach($entity->attributes()->get() as $attribute)
                     {!! AdminAttribute::renderProductAttribute($attribute, $id) !!}
                 @endforeach

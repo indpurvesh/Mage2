@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Admin\Product;
 use App\Admin\Entity;
 use App\Admin\Attribute;
+use App\Admin\ProductsImage;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -42,6 +43,11 @@ class ProductController extends Controller {
     public function store(Request $request) {
 
         $product = Product::create($request->all());
+
+        //Save Product Images
+        $this->saveProductImages($request->get('productImage'), $id);
+
+        //Save Product Attributes
         $this->saveAttribute($request->get('attribute'), $product->id);
 
         $product->slug = str_slug($request->get('name'));
@@ -82,8 +88,13 @@ class ProductController extends Controller {
      * @return Response
      */
     public function update(Request $request, $id) {
+
+
         $product = Product::find($id);
         $product->update($request->all());
+
+        //Save Product Images
+        $this->saveProductImages($request->get('productImage'), $id);
 
         $attributes = $request->get('attribute');
         $this->saveAttribute($attributes, $id);
@@ -108,17 +119,26 @@ class ProductController extends Controller {
     public function destroy($id) {
         //
     }
-    
-    
+
+
     public function uploadProductImage(Request $request) {
-        
-        
+
+
         $relativePath = $this->uploadImage($request->file('file'), $for = 'product');
-        
+
         return view('admin.product.upload-product-image')->with('imagePath', $relativePath)
                                 ->with('randomString', str_random(6));
-       
-        
     }
 
+    public function saveProductImages($images, $productId)
+    {
+
+        foreach ($images as $key => $imagePath) {
+            $data['path'] = $imagePath;
+            $data['product_id'] = $productId;
+
+            ProductsImage::create($data);
+        }
+        return true;
+    }
 }
