@@ -27,6 +27,11 @@
                     {!!  Form::label('description', 'Description')  !!}
                     {!!  Form::textarea('description',null,array('class'=>'form-control'))  !!}
                 </div>
+
+                <div class="form-group">
+                    {!!  Form::label('categories', 'Category')  !!}
+                    {!!  Form::select('categories',$categories,null,array('class'=>'form-control select2','multiple'=>'multiple','name'=>'categories[]'))  !!}
+                </div>
                 <div class="form-group image_list">
                     <label>Product Images </label>
 

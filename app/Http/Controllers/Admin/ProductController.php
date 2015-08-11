@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin\Category;
 use App\Admin\Product;
 use App\Admin\Entity;
 use App\Admin\Attribute;
@@ -29,9 +30,10 @@ class ProductController extends Controller {
      */
     public function create() {
         $entity = Entity::Product()->get()->first();
+        $categories = Category::lists('name', id);
 
-
-        return view('admin.product.create')->with('entity', $entity);
+        return view('admin.product.create')->with('entity', $entity)
+            ->with('categories', $categories);
     }
 
     /**
@@ -76,8 +78,10 @@ class ProductController extends Controller {
     public function edit($id) {
         $entity = Entity::Product()->get()->first();
         $product = Product::findorfail($id);
+        $categories = Category::lists('name', 'id');
         return view('admin.product.edit')->with('entity', $entity)
-                        ->with('product', $product);
+            ->with('product', $product)
+            ->with('categories', $categories);
     }
 
     /**

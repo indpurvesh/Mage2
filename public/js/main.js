@@ -8,6 +8,7 @@ var main = {
         jQuery(document).on('change', '.image_list .btn-file', me.productFileOnChange);
 
 
+        jQuery('.select2').select2();
         jQuery(document).on('click', '.product_image_delete',
             function (e) {
                 e.preventDefault();
