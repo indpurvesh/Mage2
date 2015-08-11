@@ -11,7 +11,7 @@
   |
  */
 
-Route::group(['prefix' => '/'], function() {
+//Route::group(['prefix' => '/'], function() {
 
     Route::get('/', 'Front\CmsController@home');
     Route::get('/home', 'Front\CmsController@home');
@@ -24,14 +24,7 @@ Route::group(['prefix' => '/'], function() {
     Route::get('/register', 'Front\CustomerController@getRegister');
     Route::post('/register', 'Front\CustomerController@postRegister');
     
-    
-     Route::group(['middleware' => 'frontAuth'], function() {
-        Route::get('/account', 'Front\AccountController@dashboard');
-        
-    });
-    
-});
-
+ 
 Route::group(['prefix' => '/admin'], function() {
 
     Route::get('/login', 'Admin\AuthController@getlogin');
