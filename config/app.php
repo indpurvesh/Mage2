@@ -145,6 +145,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
+        
+        App\Providers\FrontAuthServiceProvider::class,
 
     ],
 
@@ -194,7 +196,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Illuminate\Html\FormFacade::class,
-	    'Html'      => Illuminate\Html\HtmlFacade::class,
+	'Html'      => Illuminate\Html\HtmlFacade::class,
         'AdminAttribute' => App\Helpers\Admin\Attribute::class,
 
     ],
