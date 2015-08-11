@@ -1,18 +1,36 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+  |--------------------------------------------------------------------------
+  | Application Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register all of the routes for an application.
+  | It's a breeze. Simply tell Laravel the URIs it should respond to
+  | and give it the controller to call when that URI is requested.
+  |
+ */
 
-Route::get('/', 'Front\CmsController@home');
-Route::get('/home', 'Front\CmsController@home');
+Route::group(['prefix' => '/'], function() {
+
+    Route::get('/', 'Front\CmsController@home');
+    Route::get('/home', 'Front\CmsController@home');
+
+    Route::get('/login', 'Front\CustomerController@getlogin');
+    Route::get('/logout', 'Front\CustomerController@getLogout');
+
+    Route::post('/login', 'Front\CustomerController@postLogin');
+
+    Route::get('/register', 'Front\CustomerController@getRegister');
+    Route::post('/register', 'Front\CustomerController@postRegister');
+    
+    
+     Route::group(['middleware' => 'frontAuth'], function() {
+        Route::get('/account', 'Front\AccountController@dashboard');
+        
+    });
+    
+});
 
 Route::group(['prefix' => '/admin'], function() {
 
@@ -30,8 +48,7 @@ Route::group(['prefix' => '/admin'], function() {
         Route::resource("/attribute", "Admin\AttributeController");
         Route::resource("/product", "Admin\ProductController");
         Route::resource("/category", "Admin\CategoryController");
-        
-        Route::post('/product/uploadImage', "Admin\ProductController@uploadProductImage");
 
+        Route::post('/product/uploadImage', "Admin\ProductController@uploadProductImage");
     });
 });
