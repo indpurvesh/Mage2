@@ -16,13 +16,16 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="{!! @url('/') !!}" title="Entity">Home</a></li>
+
+                {!! Category::renderCategoryTree($categoryTree) !!}
+
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                
-                <?php if(app('front.auth')->user()): ?>
-                    <li><a href="{!! url('/customer/login') !!}">Login</a></li>
-                    <li><a href="{!! url('/customer/register') !!}">Register</a></li>
+
+                <?php if(!app('front.auth')->check()): ?>
+                <li><a href="{!! url('/login') !!}">Login</a></li>
+                <li><a href="{!! url('/register') !!}">Register</a></li>
 
                 <?php else: ?>
                     <li role="presentation" class="dropdown">
@@ -33,7 +36,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="{!! url('/customer/account') !!}" title="My Account">My Account</a></li>
                             <li><a href="{!! url('/customer/settings') !!}">Settings</a></li>
-                            <li><a href="{!! url('/admin/logout') !!}">Logout</a></li>
+                            <li><a href="{!! url('/logout') !!}">Logout</a></li>
                         </ul>
                     </li>
                 <?php endif; ?>

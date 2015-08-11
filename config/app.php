@@ -147,6 +147,7 @@ return [
         App\Providers\HelperServiceProvider::class,
         
         App\Providers\FrontAuthServiceProvider::class,
+        App\Providers\NavComposerServiceProvider::class,
 
     ],
 
@@ -196,7 +197,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Illuminate\Html\FormFacade::class,
-	'Html'      => Illuminate\Html\HtmlFacade::class,
+        'Html' => Illuminate\Html\HtmlFacade::class,
         'AdminAttribute' => App\Helpers\Admin\Attribute::class,
 
     ],

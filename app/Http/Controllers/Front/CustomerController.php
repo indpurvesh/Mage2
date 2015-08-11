@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Front;
 
+use Illuminate\Http\Request;
 use Validator;
 use App\Front\Customer;
 use App\Http\Controllers\Controller;
@@ -31,7 +32,8 @@ class CustomerController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
-        $this->redirectPath = url("/customer");
+        //$this->redirectPath = url("/customer/account");
+        $this->loginPath = url('customer/account');
     }
 
     /**
@@ -107,8 +109,8 @@ class CustomerController extends Controller
         }
 
         $credentials = $this->getCredentials($request);
-      
-        if (app('ffront.auth')->attempt($credentials, $request->has('remember'))) {
+
+        if (app('front.auth')->attempt($credentials, $request->has('remember'))) {
             return $this->handleUserWasAuthenticated($request, $throttles);
         }
 

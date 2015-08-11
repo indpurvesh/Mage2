@@ -23,7 +23,10 @@
 
     Route::get('/register', 'Front\CustomerController@getRegister');
     Route::post('/register', 'Front\CustomerController@postRegister');
-    
+
+Route::group(['middleware' => 'frontAuth'], function () {
+    Route::get('/customer/account', 'Front\AccountController@dashboard');
+});
  
 Route::group(['prefix' => '/admin'], function() {
 

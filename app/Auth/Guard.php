@@ -2,7 +2,10 @@
 
 namespace App\Auth;
 
-class Guard extends \Illuminate\Auth\Guard
+use Illuminate\Auth\Guard as FrameworkGuart;
+
+class Guard extends FrameworkGuart
 {
+
 
 }

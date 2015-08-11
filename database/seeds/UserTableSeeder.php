@@ -24,6 +24,7 @@ class UserTableSeeder extends Seeder
          Entity::create(['name' => 'Product', 'unique_key' => 'product']);
          Entity::create(['name' => 'Category', 'unique_key' => 'category']);
 
-        Category::create(['name' => 'Root', 'slug' => 'root', 'status' => 1, 'parent_category_id' => 0]);
+        //Think again... do we need root category???
+        //Category::create(['name' => 'Root', 'slug' => 'root', 'status' => 1, 'parent_category_id' => 0]);
     }
 }

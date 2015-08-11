@@ -28,5 +28,12 @@ class HelperServiceProvider extends ServiceProvider
             require_once($filename);
 
         }
+
+        foreach (glob(app_path() . '/Helpers/Front/*.php') as $filename) {
+            require_once($filename);
+
+        }
+
+
     }
 }
