@@ -36,4 +36,9 @@ class Category extends Model
         }
         return $cats;
     }
+
+    public function product()
+    {
+        return $this->belongsToMany('App\Admin\Product');
+    }
 }
