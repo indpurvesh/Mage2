@@ -31,7 +31,7 @@ class CustomerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('frontAuth', ['except' => 'getLogout']);
         //$this->redirectPath = url("/customer/account");
         $this->loginPath = url('customer/account');
     }

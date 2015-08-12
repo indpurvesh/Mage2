@@ -52,6 +52,8 @@ class ProductController extends Controller {
         //Save Product Images
         $this->saveProductImages($request->get('productImage'), $product->id);
 
+         //Save Product Images
+        $this->saveProductPrices($request->get('price'), $product->id);
         //Save Product Categoryies
         $this->saveCategories($request->get('categories'), $product->id);
 
