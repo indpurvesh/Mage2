@@ -62,9 +62,12 @@
                     {!!  Form::text('qty',null,array('class'=>'form-control'))  !!}
                 </div>
 
+                <?php
+                $productPrice = (isset($productPrice)) ? $productPrice : 0;
+                ?>
                 <div class="form-group">
                     {!!  Form::label('price', 'Price')  !!}
-                    {!!  Form::text('price',null,array('class'=>'form-control'))  !!}
+                    {!!  Form::text('price',$productPrice,array('class'=>'form-control'))  !!}
                 </div>
 
                 <div class="form-group">

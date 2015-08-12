@@ -21,6 +21,11 @@ class Product extends Model
         return $this->hasMany('App\Admin\Attribute');
     }
 
+    public function price()
+    {
+        return $this->hasMany('App\Admin\ProductsPrice');
+    }
+
     public function Images()
     {
         return $this->hasMany('App\Admin\ProductsImage');

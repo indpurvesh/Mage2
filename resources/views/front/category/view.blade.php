@@ -46,10 +46,15 @@ _________________________________________________________ -->
                         <div class="text">
                             <h3><a href="#">{{ $product->name }}</a></h3>
 
-                            <p class="price">123.22</p>
+                            <?php
+                            $price = $product->price()->get()->first();
+                            $productPrice = (isset($price)) ? $price->sale_price : 0.00;
+                            ?>
+                            <p class="price">{{ $productPrice }}</p>
 
                             <p class="buttons">
-                                <a href="#" class="btn btn-default">View detail</a>
+                                <a href="{!! url(route('product.view',$product->slug ))  !!}" class="btn btn-default">View
+                                    detail</a>
                                 <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </p>
                         </div>

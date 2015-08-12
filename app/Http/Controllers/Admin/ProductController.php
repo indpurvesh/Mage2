@@ -8,6 +8,7 @@ use App\Admin\Product;
 use App\Admin\Entity;
 use App\Admin\Attribute;
 use App\Admin\ProductsImage;
+use App\Admin\ProductsPrice;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -85,13 +86,17 @@ class ProductController extends Controller {
         $product = Product::findorfail($id);
 
         $productCategory = $product->category()->lists('category_id')->toArray();
+        $price = $product->price()->get()->first();
+
+        $productPrice = (isset($price)) ? $price->sale_price : 0;
 
         $categories = Category::lists('name', 'id');
 
         return view('admin.product.edit')->with('entity', $entity)
             ->with('product', $product)
             ->with('categories', $categories)
-            ->with('productCategory', $productCategory);
+            ->with('productCategory', $productCategory)
+            ->with('productPrice', $productPrice);
 
     }
 
@@ -110,6 +115,9 @@ class ProductController extends Controller {
 
         //Save Product Images
         $this->saveProductImages($request->get('productImage'), $id);
+
+        //Save Product Images
+        $this->saveProductPrices($request->get('price'), $id);
 
         //Save Product Categoryies
         $this->saveCategories($request->get('categories'), $id);
@@ -152,7 +160,11 @@ class ProductController extends Controller {
     public function saveProductImages($images, $productId)
     {
 
+
         foreach ($images as $key => $imagePath) {
+            if (is_int($key)) {
+                continue;
+            }
             $data['path'] = $imagePath;
             $data['product_id'] = $productId;
 
@@ -169,5 +181,15 @@ class ProductController extends Controller {
         foreach ($categories as $categoryId) {
             CategoryProduct::create(['category_id' => $categoryId, 'product_id' => $productId]);
         }
+    }
+
+    /*
+     * Save Product Prices
+     * @todo how to save multiple price with customer group and etc....
+     *
+     */
+    public function saveProductPrices($price, $productId)
+    {
+        ProductsPrice::create(['product_id' => $productId, 'qty' => 1, 'sale_price' => $price]);
     }
 }
