@@ -26,4 +26,9 @@ class Product extends Model
         return $this->hasMany('App\Admin\ProductsImage');
     }
 
+    public function category()
+    {
+        return $this->hasMany('App\Admin\CategoryProduct');
+    }
+
 }

@@ -28,24 +28,28 @@
                     {!!  Form::textarea('description',null,array('class'=>'form-control'))  !!}
                 </div>
 
+
+                <?php
+                $productCategory = (isset($productCategory)) ? $productCategory : [];
+                ?>
                 <div class="form-group">
                     {!!  Form::label('categories', 'Category')  !!}
-                    {!!  Form::select('categories',$categories,null,array('class'=>'form-control select2','multiple'=>'multiple','name'=>'categories[]'))  !!}
+                    {!!  Form::select('categories',$categories,$productCategory,array('class'=>'form-control select2','multiple'=>'multiple','name'=>'categories[]'))  !!}
                 </div>
                 <div class="form-group image_list">
                     <label>Product Images </label>
 
-                    <?php  $id = (isset($product->id) ? $product->id : null); ?>
-                    @foreach($product->images()->get() as $productImage)
-                        <div class="upload_image_preview col-md-2">
-                            <a href="" class="glyphicon glyphicon-remove product_image_delete pull-right">&nbsp;</a>
-                            <img class="img-responsive" width="200" src="{{ $productImage->path }}"/>
-                            <input type="hidden" name="productImage[{{ $productImage->id }}]"
-                                   value="{{ $productImage->path}}"/>
-                        </div>
-                    @endforeach
+                    @if (isset($product))
+                        @foreach($product->images()->get() as $productImage)
+                            <div class="upload_image_preview col-md-2">
+                                <a href="" class="glyphicon glyphicon-remove product_image_delete pull-right">&nbsp;</a>
+                                <img class="img-responsive" width="200" src="{{ $productImage->path }}"/>
+                                <input type="hidden" name="productImage[{{ $productImage->id }}]"
+                                       value="{{ $productImage->path}}"/>
+                            </div>
+                        @endforeach
+                    @endif
 
-                    <?php ?>
                     <div class='image_file col-md-2'> 
                         <div data-token="{{ csrf_token() }}" class='btn btn-default btn-file image glyphicon glyphicon-camera'>
                         </div>

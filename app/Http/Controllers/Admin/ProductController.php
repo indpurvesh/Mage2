@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin\CategoryProduct;
 use App\Admin\Category;
 use App\Admin\Product;
 use App\Admin\Entity;
@@ -30,7 +31,8 @@ class ProductController extends Controller {
      */
     public function create() {
         $entity = Entity::Product()->get()->first();
-        $categories = Category::lists('name', id);
+        $categories = Category::lists('name', 'id');
+
 
         return view('admin.product.create')->with('entity', $entity)
             ->with('categories', $categories);
@@ -47,7 +49,10 @@ class ProductController extends Controller {
         $product = Product::create($request->all());
 
         //Save Product Images
-        $this->saveProductImages($request->get('productImage'), $id);
+        $this->saveProductImages($request->get('productImage'), $product->id);
+
+        //Save Product Categoryies
+        $this->saveCategories($request->get('categories'), $product->id);
 
         //Save Product Attributes
         $this->saveAttribute($request->get('attribute'), $product->id);
@@ -78,10 +83,16 @@ class ProductController extends Controller {
     public function edit($id) {
         $entity = Entity::Product()->get()->first();
         $product = Product::findorfail($id);
+
+        $productCategory = $product->category()->lists('category_id')->toArray();
+
         $categories = Category::lists('name', 'id');
+
         return view('admin.product.edit')->with('entity', $entity)
             ->with('product', $product)
-            ->with('categories', $categories);
+            ->with('categories', $categories)
+            ->with('productCategory', $productCategory);
+
     }
 
     /**
@@ -100,6 +111,10 @@ class ProductController extends Controller {
         //Save Product Images
         $this->saveProductImages($request->get('productImage'), $id);
 
+        //Save Product Categoryies
+        $this->saveCategories($request->get('categories'), $id);
+
+        //Save Product Attributes
         $attributes = $request->get('attribute');
         $this->saveAttribute($attributes, $id);
 
@@ -144,5 +159,15 @@ class ProductController extends Controller {
             ProductsImage::create($data);
         }
         return true;
+    }
+
+    public function saveCategories($categories, $productId)
+    {
+
+        CategoryProduct::where('product_id', $productId)->delete();
+
+        foreach ($categories as $categoryId) {
+            CategoryProduct::create(['category_id' => $categoryId, 'product_id' => $productId]);
+        }
     }
 }
