@@ -13,22 +13,30 @@
 
 //Route::group(['prefix' => '/'], function() {
 
-    Route::get('/', 'Front\CmsController@home');
-    Route::get('/home', 'Front\CmsController@home');
+Route::get('/', 'Front\CmsController@home');
+Route::get('/home', 'Front\CmsController@home');
 
-    Route::get('/login', 'Front\CustomerController@getlogin');
-    Route::get('/logout', 'Front\CustomerController@getLogout');
+Route::get('/login', 'Front\CustomerController@getlogin');
+Route::get('/logout', 'Front\CustomerController@getLogout');
 
-    Route::post('/login', 'Front\CustomerController@postLogin');
+Route::post('/login', 'Front\CustomerController@postLogin');
 
-    Route::get('/register', 'Front\CustomerController@getRegister');
-    Route::post('/register', 'Front\CustomerController@postRegister');
+Route::get('/register', 'Front\CustomerController@getRegister');
+Route::post('/register', 'Front\CustomerController@postRegister');
 
 Route::get('/category/{slug}', 'Front\CategoryController@view');
 Route::get('/product/{slug}', ['as' => 'product.view', 'uses' => 'Front\ProductController@view']);
 
 Route::group(['middleware' => 'frontAuth'], function () {
     Route::get('/customer/account', 'Front\AccountController@dashboard');
+
+    Route::get('/customer/account/billing', 'Front\AccountController@billing');
+    Route::post('/customer/account/billing', 'Front\AccountController@storeBilling');
+
+    Route::get('/customer/account/billing/add', 'Front\AccountController@addBilling');
+    Route::get('/customer/account/billing/{billing}/edit', 'Front\AccountController@editBilling');
+
+    Route::patch('/customer/account/billing/{billing}', 'Front\AccountController@updateBilling');
 });
  
 Route::group(['prefix' => '/admin'], function() {

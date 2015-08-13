@@ -32,7 +32,7 @@ class CustomerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        //@todo fix this $this->middleware('guest', ['except' => 'getLogout']);
         $this->redirectPath = url("/customer/account");
         $this->loginPath = url('/login');
     }
