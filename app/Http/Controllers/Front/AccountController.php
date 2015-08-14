@@ -70,4 +70,53 @@ class AccountController extends Controller
         $address->update($request->all());
         return redirect('/customer/account/billing');
     }
+
+
+    public function shipping()
+    {
+
+        $customerId = app('front.auth')->user()->id;
+        $shippings = Address::Shipping()->where('customer_id', '=', $customerId)->get();
+
+        return view('front.account.shipping')->with('shippings', $shippings);
+    }
+
+    public function storeShipping(Request $request)
+    {
+        $customerId = app('front.auth')->user()->id;
+        $request->merge(['customer_id' => $customerId]);
+
+        Address::create($request->all());
+        return redirect('/customer/account/shipping');
+
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\View\View
+     *
+     */
+    public function editShipping($id)
+    {
+        $shipping = Address::find($id);
+        return view('front.account.edit-shipping')->with('shipping', $shipping);
+    }
+
+    /**
+     * Add Billing Address Form
+     * @return \Illuminate\View\View
+     *
+     */
+    public function addShipping()
+    {
+        return view('front.account.add-shipping');
+    }
+
+    public function updateShipping($id, Request $request)
+    {
+
+        $address = Address::findorfail($id);
+        $address->update($request->all());
+        return redirect('/customer/account/shipping');
+    }
 }

@@ -20,6 +20,11 @@ class Address extends Model
 
     public function scopeBilling()
     {
-        $this->where('type', '=', 'BILLING');
+        return $this->where('type', '=', 'BILLING');
+    }
+
+    public function scopeShipping()
+    {
+        return $this->where('type', '=', 'SHIPPING');
     }
 }

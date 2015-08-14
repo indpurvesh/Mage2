@@ -30,6 +30,7 @@ Route::get('/product/{slug}', ['as' => 'product.view', 'uses' => 'Front\ProductC
 Route::group(['middleware' => 'frontAuth'], function () {
     Route::get('/customer/account', 'Front\AccountController@dashboard');
 
+    //User Billing Address CRUD
     Route::get('/customer/account/billing', 'Front\AccountController@billing');
     Route::post('/customer/account/billing', 'Front\AccountController@storeBilling');
 
@@ -37,6 +38,15 @@ Route::group(['middleware' => 'frontAuth'], function () {
     Route::get('/customer/account/billing/{billing}/edit', 'Front\AccountController@editBilling');
 
     Route::patch('/customer/account/billing/{billing}', 'Front\AccountController@updateBilling');
+
+    //User Shipping Address CRUD
+    Route::get('/customer/account/shipping', 'Front\AccountController@shipping');
+    Route::post('/customer/account/shipping', 'Front\AccountController@storeShipping');
+
+    Route::get('/customer/account/shipping/add', 'Front\AccountController@addShipping');
+    Route::get('/customer/account/shipping/{shipping}/edit', 'Front\AccountController@editShipping');
+
+    Route::patch('/customer/account/shipping/{shipping}', 'Front\AccountController@updateShipping');
 });
  
 Route::group(['prefix' => '/admin'], function() {
