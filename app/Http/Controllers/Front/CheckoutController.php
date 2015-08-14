@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Front;
 
-use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -18,7 +18,7 @@ class CheckoutController extends Controller
     {
         $data = array();
         $config = Config::get('mage2');
-        $user = (Auth::user()) ? Auth::user()->toArray() : null;
+        $user = (app('front.auth')->user()) ? app('front.auth')->toArray() : null;
 
         if(null !== $user) {
             $data['user'] = $user;

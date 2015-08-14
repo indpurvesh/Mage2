@@ -1,4 +1,4 @@
-@extends('front.layouts.master')
+@extends('front.master')
 
 
 @section('content')
@@ -143,7 +143,7 @@
         @foreach($cart as $item)
 
 
-            <?php $total += $item['qty'] * $item['price']; ?>
+            <?php $total += $item['qty'] * $item['price']->first()->sale_price; ?>
             <div class="row">
 
                 <div class="col-xs-3"><img class="img-responsive" width="100" src="{!! url($item['image']) !!}">
@@ -153,7 +153,7 @@
                 </div>
                 <div class="col-xs-4">
                     <div class="text-right">
-                        <h6><strong>{!! $item['price'] !!} <span
+                        <h6><strong>{!! $item['price']->first()->sale_price !!} <span
                                         class="text-muted">x</span></strong> {{ $item['qty']  }}</h6>
                     </div>
                 </div>
