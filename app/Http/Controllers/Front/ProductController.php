@@ -22,7 +22,7 @@ class ProductController extends Controller
         $product = Product::where('slug', '=', $slug)->get()->first();
 
         //Get Product Price @todo
-        $price = $product->price()->get()->first();
+        $price = $product->getPrice();
 
         return view('front.product.view')->with('product', $product)
             ->with('price', $price);

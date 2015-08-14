@@ -36,4 +36,14 @@ class Product extends Model
         return $this->hasMany('App\Admin\CategoryProduct');
     }
 
+    public function getPrice() {
+        $price = $this->price()->get()->first();
+        
+        if(!isset($price)) {
+            throwException('Price not set');
+        }
+        
+        return $price;
+        
+    }
 }

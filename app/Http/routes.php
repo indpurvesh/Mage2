@@ -27,6 +27,17 @@ Route::post('/register', 'Front\CustomerController@postRegister');
 Route::get('/category/{slug}', 'Front\CategoryController@view');
 Route::get('/product/{slug}', ['as' => 'product.view', 'uses' => 'Front\ProductController@view']);
 
+Route::post('/order', 'Front\OrderController@index');
+
+Route::get('/cart', 'Front\CartController@index');
+Route::get('/checkout', 'Front\checkoutController@index');
+
+
+Route::post('/cart/addtocart/{id}', 'Front\CartController@addtocart');
+Route::post('/cart/deletecartitem/{id}', 'Front\CartController@deletecartitem');
+Route::post('/cart/updatecartitem', 'Front\CartController@updatecartitem');
+
+
 Route::group(['middleware' => 'frontAuth'], function () {
     Route::get('/customer/account', 'Front\AccountController@dashboard');
 

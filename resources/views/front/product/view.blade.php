@@ -38,8 +38,11 @@
                         <h1 class="text-center">{{ $product->name }}</h1>
                         <p class="price">${{ number_format($price->sale_price,2) }}</p>
                         <p class="text-center buttons">
-                            <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to
-                                cart</a>
+                            {!! Form::open(array('url' => url('/cart/addtocart/'. $product->id),
+                                        'method' => 'post' , 'class' => 'addtocartForm')) !!}
+                    
+                      <a href="#" class="btn btn-success" onclick="jQuery(this).parents('form:first').submit()">Add To Cart</a>
+                    {!! Form::close() !!}
                             <a href="#" class="btn btn-default"><i class="fa fa-heart"></i> Add to
                                 wishlist</a>
                         </p>
