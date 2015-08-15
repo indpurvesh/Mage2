@@ -23,6 +23,7 @@
 
             <ul class="nav navbar-nav navbar-right">
 
+                <li><a href="{!! url('/cart/') !!}" title="Cart">Cart ({!! count(Session::get('cart')) !!})</a></li>
                 <?php if(!app('front.auth')->check()): ?>
                 <li><a href="{!! url('/login') !!}">Login</a></li>
                 <li><a href="{!! url('/register') !!}">Register</a></li>
