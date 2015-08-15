@@ -35,7 +35,8 @@ _________________________________________________________ -->
                         <div class="image-container">
                             <div class="image">
 
-                                <a href="#">
+                                <a href="{!! url(route('product.view',$product->slug ))  !!}"  
+                                   title="{{ $product->name }}" >
                                     <img src="{{ $product->images()->get()->first()->path }}"
                                          alt="" class="img-responsive">
                                 </a>
@@ -44,7 +45,8 @@ _________________________________________________________ -->
                         </div>
 
                         <div class="text">
-                            <h3><a href="#">{{ $product->name }}</a></h3>
+                            <h3><a href="{!! url(route('product.view',$product->slug ))  !!}"  
+                                   title="{{ $product->name }}">{{ $product->name }}</a></h3>
 
                             <?php
                             $price = $product->price()->get()->first();

@@ -28,8 +28,8 @@ class Address extends Model
         return $this->where('type', '=', 'SHIPPING');
     }
     
-   public function scopeOfCustomerId($query,$customerId)
-    {
+   public function scopeOfCustomerId($query, $customerId) {
         return $query->where('customer_id', '=', $customerId);
     }
+
 }

@@ -7,65 +7,38 @@
     {!! Form::model($data,array( 'url' => url('order'))) !!}
 
     <div class="col-md-12">
-        <h3>Billing Information</h3>
-        
-        <div class="form-group">
-            {!!  Form::label('name', 'Name')  !!}
-            {!!  Form::text('user[name]',null,array('class'=>'form-control'))  !!}
-        </div>
 
-        <div class="form-group">
-            {!!  Form::label('companyname', 'Company Name')  !!}
-            {!!  Form::text('user[companyname]',null,array('class'=>'form-control'))  !!}
-        </div>
+        <?php $total = 0 ?>
+        @foreach($cart as $item)
 
-        @if(!app('front.auth')->check())
-        <div class="form-group">
-            {!!  Form::label('email', 'Email')  !!}
-            {!!  Form::text('user[email]',null,array('class'=>'form-control'))  !!}
-        </div>
-        <div class="form-group">
-            {!!  Form::label('password', 'Password')  !!}
-            {!!  Form::text('user[password]',null,array('class'=>'form-control'))  !!}
-        </div>
-        @endif
 
-        <div class="form-group">
-            {!!  Form::label('number', 'Number')  !!}
-            {!!  Form::text('billing[number]',null,array('class'=>'form-control'))  !!}
-        </div>
+            <?php $total += $item['qty'] * $item['price']->first()->sale_price; ?>
+            <div class="row">
 
-        <div class="form-group">
-            {!!  Form::label('street', 'Street')  !!}
-            {!!  Form::text('billing[street]',null,array('class'=>'form-control'))  !!}
-        </div>
+                <div class="col-xs-3">
+                    <img class="img-responsive" width="100" src="{!! url($item['image']) !!}">
+                </div>
+                <div class="col-xs-4">
+                    <h4 class="product-name"><strong>{!! $item['name'] !!}</strong></h4>
+                </div>
+                <div class="col-xs-4">
+                    <div class="text-right">
+                        <h6><strong>{!! $item['price']->first()->sale_price !!} <span
+                                        class="text-muted">x</span></strong> {{ $item['qty']  }}</h6>
+                    </div>
+                </div>
+            </div>
+        @endforeach
 
+        <hr/>
         <div class="form-group">
-            {!!  Form::label('area', 'Area')  !!}
-            {!!  Form::text('billing[area]',null,array('class'=>'form-control'))  !!}
-        </div>
-
-        <div class="form-group">
-            {!!  Form::label('city', 'City')  !!}
-            {!!  Form::text('billing[city]',null,array('class'=>'form-control'))  !!}
-        </div>
-
-        <div class="form-group">
-            {!!  Form::label('post_code', 'Post Code')  !!}
-            {!!  Form::text('billing[post_code]',null,array('class'=>'form-control'))  !!}
-        </div>
-
-        <div class="form-group">
-            {!!  Form::label('country', 'Country')  !!}
-            {!!  Form::text('billing[country]',null,array('class'=>'form-control'))  !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::hidden('step','shipping') !!}
-            {!! Form::button('continue',['class'=>'btn btn-primary','onclick' => 'jQuery(this).parents("form:first").submit()']) !!}
+            {!!  Form::button('Place Order',array(	'onclick' => 'jQuery(this).parents("form:first").submit()',
+            'class' => 'btn btn-primary' ))  !!}
         </div>
     </div>
 
+    {!! Form::hidden('order_id',$order->id) !!}
+    {!! Form::hidden('step','order-review') !!}
     {!! Form::close() !!}
 
 @endsection

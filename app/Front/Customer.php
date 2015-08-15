@@ -8,11 +8,11 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class Customer extends Model implements AuthenticatableContract, CanResetPasswordContract
-{
-    use Authenticatable, CanResetPassword;
+class Customer extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
-  
+    use Authenticatable,
+        CanResetPassword;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -26,4 +26,9 @@ class Customer extends Model implements AuthenticatableContract, CanResetPasswor
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function scopeOfEmail($query, $email) {
+        return $query->where('email', '=', $email);
+    }
+
 }

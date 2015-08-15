@@ -43,8 +43,6 @@
                     
                       <a href="#" class="btn btn-success" onclick="jQuery(this).parents('form:first').submit()">Add To Cart</a>
                     {!! Form::close() !!}
-                            <a href="#" class="btn btn-default"><i class="fa fa-heart"></i> Add to
-                                wishlist</a>
                         </p>
                     </div>
                 </div>
