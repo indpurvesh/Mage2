@@ -61,7 +61,7 @@
         </div>
 
         <div class="form-group">
-            {!! Form::hidden('step','billing') !!}
+            {!! Form::hidden('step','shipping') !!}
             {!! Form::button('continue',['class'=>'btn btn-primary','onclick' => 'jQuery(this).parents("form:first").submit()']) !!}
         </div>
     </div>

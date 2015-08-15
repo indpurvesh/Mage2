@@ -16,7 +16,21 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-
+        /* SHIPPING SAVE STEP */
+        if($request->get('step') == 'billing') {
+            //SAVE or CREATE Billing ADDRESS 
+            $data = [];
+            return view('front.order.shipping-step')->with('data', $data);
+        }
+        
+        /* SHIPPING SAVE STEP */
+         if($request->get('step') == 'shipping') {
+            //SAVE or CREATE Billing ADDRESS 
+            $data = [];
+            return view('front.order.shipping-method')->with('data', $data);
+        }
+        
+        return $request->all();
         //@TODO bug allowing only login user to create order
         $userId = Auth::user()->id;
         //If user is not authenticated then create user
