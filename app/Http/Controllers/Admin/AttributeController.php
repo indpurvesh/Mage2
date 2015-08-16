@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Admin\Attribute;
-use App\Admin\Entity;
+use Mage2\Core\Model\Attribute;
+use Mage2\Core\Model\Entity;
 use Illuminate\Http\Request;
-use App\Admin\AttributeSelectValue;
-use App\Http\Requests;
+use Mage2\Core\Model\AttributeSelectValue;
 use App\Http\Controllers\Controller;
 
 class AttributeController extends Controller {

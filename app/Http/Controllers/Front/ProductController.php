@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Admin\Product;
+use Mage2\Core\Model\Product;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;

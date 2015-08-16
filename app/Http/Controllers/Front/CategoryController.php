@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
-use App\Admin\Category;
+use Mage2\Core\Model\Category;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\CategoryRequest;
-use App\Admin\Category;
+use Mage2\Core\Model\Category;
 use Illuminate\Http\Request;
-use App\Admin\Entity;
+use Mage2\Core\Model\Entity;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 

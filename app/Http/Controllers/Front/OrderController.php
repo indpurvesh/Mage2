@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Front\Customer;
-use App\Front\Address;
+use Mage2\Core\Model\Customer;
+use Mage2\Core\Model\Address;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Config;
-use App\Front\Order;
+use Mage2\Core\Model\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

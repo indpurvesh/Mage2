@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Front\Address;
+use Mage2\Core\Model\Address;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests;

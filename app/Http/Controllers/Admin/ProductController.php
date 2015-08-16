@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Admin\CategoryProduct;
-use App\Admin\Category;
-use App\Admin\Product;
-use App\Admin\Entity;
-use App\Admin\Attribute;
-use App\Admin\ProductsImage;
-use App\Admin\ProductsPrice;
+use Mage2\Core\Model\CategoryProduct;
+use Mage2\Core\Model\Category;
+use Mage2\Core\Model\Product;
+use Mage2\Core\Model\Entity;
+use Mage2\Core\Model\Attribute;
+use Mage2\Core\Model\ProductsImage;
+use Mage2\Core\Model\ProductsPrice;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;

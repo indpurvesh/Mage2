@@ -1,4 +1,5 @@
 <?php
+
 /*
 Copyright (c) 2015, Purvesh
 All rights reserved.
@@ -32,7 +33,7 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 
 namespace Mage2\Admin\Controller;
 use App\Http\Controllers\Controller;
-use App\User;
+use Mage2\Core\Model\User;
 
 class IndexController extends Controller {
 

@@ -9,7 +9,7 @@ class AuthManager extends \Illuminate\Auth\AuthManager
 
     protected function createEloquentProvider()
     {
-        $model = 'App\Front\Customer';
+        $model = 'Mage2\Core\Model\Customer';
 
         return new EloquentUserProvider($this->app['hash'], $model);
     }

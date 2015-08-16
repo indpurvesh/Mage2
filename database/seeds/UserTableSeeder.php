@@ -1,10 +1,10 @@
 <?php
 
-use App\Admin\Category;
+use Mage2\Core\Model\Category;
 use Illuminate\Database\Seeder;
 
-use App\User;
-use App\Admin\Entity;
+use Mage2\Core\Model\User;
+use Mage2\Core\Model\Entity;
 
 class UserTableSeeder extends Seeder
 {

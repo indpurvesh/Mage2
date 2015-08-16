@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Front;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\Auth;
-use App\Front\Customer;
+use Mage2\Core\Model\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;

@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
-use App\Admin\CustomerGroup;
+use Mage2\Core\Model\CustomerGroup;
 use App\Http\Requests\Admin\CustomerGroupRequest;
 use App\Http\Controllers\Controller;
 
@@ -17,7 +16,7 @@ class CustomerGroupController extends Controller
      */
     public function index()
     {
-        $customerGroups = \App\Admin\CustomerGroup::all();
+        $customerGroups = CustomerGroup::all();
         return view('admin.customer-group.index')
                     ->with('customerGroups',$customerGroups);
     }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Admin\Entity;
+use Mage2\Core\Model\Entity;
 use App\Http\Requests\Admin\EntityRequest;
 use App\Http\Controllers\Controller;
 

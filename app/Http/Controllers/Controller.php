@@ -32,11 +32,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Admin\ProductsTextValue;
-use App\Admin\ProductsVarcharValue;
-use App\Admin\CategoriesTextValue;
-use App\Admin\Attribute;
-use App\Admin\CategoriesVarcharValue;
+use Mage2\Core\Model\ProductsTextValue;
+use Mage2\Core\Model\ProductsVarcharValue;
+use Mage2\Core\Model\CategoriesTextValue;
+use Mage2\Core\Model\Attribute;
+use Mage2\Core\Model\CategoriesVarcharValue;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

@@ -1,11 +1,11 @@
 <?php
 namespace App\Helpers\Admin;
 
-use App\Admin\AttributeSelectValue;
-use App\Admin\ProductsTextValue;
-use App\Admin\ProductsVarcharValue;
-use App\Admin\CategoriesTextValue;
-use App\Admin\CategoriesVarcharValue;
+use Mage2\Core\Model\AttributeSelectValue;
+use Mage2\Core\Model\ProductsTextValue;
+use Mage2\Core\Model\ProductsVarcharValue;
+use Mage2\Core\Model\CategoriesTextValue;
+use Mage2\Core\Model\CategoriesVarcharValue;
 
 class Attribute
 {

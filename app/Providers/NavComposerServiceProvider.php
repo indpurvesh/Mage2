@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Admin\Category;
+use Mage2\Core\Model\Category;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 

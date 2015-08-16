@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
-use App\Admin\Product;
+use Mage2\Core\Model\Product;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 
