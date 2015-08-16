@@ -32,7 +32,7 @@
 
         <div class="form-group">
             {!!  Form::label('number', 'Number')  !!}
-            {!!  Form::text('billing[number]',null,array('class'=>'form-control'))  !!}
+            {!!  Form::text('number',null,array('class'=>'form-control'))  !!}
         </div>
 
         <div class="form-group">
@@ -52,7 +52,7 @@
 
         <div class="form-group">
             {!!  Form::label('post_code', 'Post Code')  !!}
-            {!!  Form::text('post_code',null,array('class'=>'form-control'))  !!}
+            {!!  Form::text('zip_code',null,array('class'=>'form-control'))  !!}
         </div>
 
         <div class="form-group">
@@ -62,7 +62,10 @@
 
         <div class="form-group">
             {!! Form::hidden('step','billing') !!}
+            {!! Form::hidden('address_id') !!}
+            {!! Form::hidden('customer_id') !!}
             {!! Form::button('continue',['class'=>'btn btn-primary','onclick' => 'jQuery(this).parents("form:first").submit()']) !!}
+
         </div>
     </div>
 

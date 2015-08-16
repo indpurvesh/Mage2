@@ -19,19 +19,21 @@ class CheckoutController extends Controller
     {
         $data = array();
         //$config = Config::get('mage2');
-        $user = (app('front.auth')->user()) ? app('front.auth')->user()->toArray() : null;
+        $customer = (app('front.auth')->user()) ? app('front.auth')->user() : null;
 
-        if(null !== $user) {
-            $data['user'] = $user;
-            
-            $billingAddress = Address::Billing()->OfCustomerId($user['id'])->get()->toArray();
-            $data['billing'] = (count($billingAddress) > 0) ? $billingAddress[0] : array();
-            
-            //$shippingAddress = Address::Shipping()->OfCustomerId($user['id'])->get();
-            //$data['shipping'] = (count($shippingAddress) > 0) ? $shippingAddress[0] : array();
+        if (null !== $customer) {
+
+            $data = $customer->toArray();
+            $billingAddress = Address::Billing()->OfCustomerId($customer->id)->get()->first();
+
+            if (isset($billingAddress)) {
+                $data += $billingAddress->toArray();
+                $data['address_id'] = $billingAddress->id;
+                $data['customer_id'] = $customer->id;
+            }
+
         }
-        //$cartData = (Session::get('cart')) ?  Session::get('cart') : array();
-         //$data['user'] = array('firstname' => 'test');
+
         return view('front.checkout.index')->with('data', $data);
     }
 }

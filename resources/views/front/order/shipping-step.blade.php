@@ -47,8 +47,8 @@
         </div>
 
         <div class="form-group">
-            {!!  Form::label('post_code', 'Post Code')  !!}
-            {!!  Form::text('post_code',null,array('class'=>'form-control'))  !!}
+            {!!  Form::label('zip_code', 'Zip Code')  !!}
+            {!!  Form::text('zip_code',null,array('class'=>'form-control'))  !!}
         </div>
 
         <div class="form-group">
@@ -59,6 +59,8 @@
         <div class="form-group">
             {!! Form::hidden('step','shipping') !!}
             {!! Form::hidden('order_id',$order->id) !!}
+            {!! Form::hidden('address_id') !!}
+            {!! Form::hidden('customer_id') !!}
             {!! Form::button('continue',['class'=>'btn btn-primary','onclick' => 'jQuery(this).parents("form:first").submit()']) !!}
         </div>
     </div>
