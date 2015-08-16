@@ -1,0 +1,22 @@
+{
+    "name": "indpurvesh/mage2",
+    "description": "Laravel 5 based E commerce System",
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.1.*",
+        "illuminate/html": "5.*"
+    },
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Purvesh",
+            "email": "ind.purvesh@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+     "autoload": {
+        "psr-4": {
+            "Mage2": "src/"
+        }
+    }
+}
