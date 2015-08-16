@@ -2,7 +2,7 @@
 
 /*
   |--------------------------------------------------------------------------
-  | Application Routes
+  | Mage2 Application Routes
   |--------------------------------------------------------------------------
   |
   | Here is where you can register all of the routes for an application.
@@ -59,7 +59,7 @@ Route::group(['middleware' => 'frontAuth'], function () {
 
     Route::patch('/customer/account/shipping/{shipping}', 'Front\AccountController@updateShipping');
 });
- 
+
 Route::group(['prefix' => '/admin'], function() {
 
     Route::get('/login', 'Admin\AuthController@getlogin');

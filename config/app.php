@@ -148,6 +148,8 @@ return [
         
         App\Providers\FrontAuthServiceProvider::class,
         App\Providers\NavComposerServiceProvider::class,
+        
+        Mage2\Mage2ServiceProvider::class
 
     ],
 
