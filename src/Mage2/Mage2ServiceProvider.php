@@ -38,6 +38,7 @@
 
 namespace Mage2;
 
+use Mage2\Core\Auth\AuthManager;
 use Illuminate\Support\ServiceProvider;
 
 class Mage2ServiceProvider extends ServiceProvider {
@@ -50,7 +51,9 @@ class Mage2ServiceProvider extends ServiceProvider {
     public function boot() {
         $this->registerRoute();
         $this->registerThemePath();
+        $this->registerFrontAuth();
     }
+
 
     /**
      * Register Mage2 application services.
@@ -69,6 +72,23 @@ class Mage2ServiceProvider extends ServiceProvider {
     
     public function registerThemePath() {
          $this->loadViewsFrom(__DIR__.'/themes', 'mage2');
+    }
+
+    public function registerFrontAuth()
+    {
+        $this->app->singleton('front.auth', function ($app) {
+            $app['front.auth.loaded'] = true;
+
+            return new AuthManager($app);
+        });
+
+        $this->app->singleton('front.auth.driver', function ($app) {
+            return $app['front.auth']->driver();
+        });
+
+        $this->app->alias('front.auth', 'Mage2\Core\Auth\AuthManager');
+
+        $this->app->alias('front.auth.driver', 'Mage2\Core\Auth\Guard');
     }
 
 }

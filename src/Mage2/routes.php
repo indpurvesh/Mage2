@@ -42,8 +42,75 @@
   |
  */
 
+Route::get('/', 'Mage2\Front\Controller\CmsController@home');
+Route::get('/home', 'Mage2\Front\Controller\CmsController@home');
+
+Route::get('/login', 'Mage2\Front\Controller\CustomerController@getlogin');
+Route::get('/logout', 'Mage2\Front\Controller\CustomerController@getLogout');
+
+Route::post('/login', 'Mage2\Front\Controller\CustomerController@postLogin');
+
+Route::get('/register', 'Mage2\Front\Controller\CustomerController@getRegister');
+Route::post('/register', 'Mage2\Front\Controller\CustomerController@postRegister');
+
+Route::get('/category/{slug}', 'Mage2\Front\Controller\CategoryController@view');
+Route::get('/product/{slug}', ['as' => 'product.view', 'uses' => 'Mage2\Front\Controller\ProductController@view']);
+
+Route::post('/order', 'Mage2\Front\Controller\OrderController@index');
+
+Route::get('/cart', 'Mage2\Front\Controller\CartController@index');
+Route::get('/checkout', 'Mage2\Front\Controller\checkoutController@index');
+
+
+Route::post('/cart/addtocart/{id}', 'Mage2\Front\Controller\CartController@addtocart');
+Route::post('/cart/deletecartitem/{id}', 'Mage2\Front\Controller\CartController@deletecartitem');
+Route::post('/cart/updatecartitem', 'Mage2\Front\Controller\CartController@updatecartitem');
+
+
+Route::group(['middleware' => 'frontAuth'], function () {
+    Route::get('/customer/account', 'Mage2\Front\Controller\AccountController@dashboard');
+
+    //User Billing Address CRUD
+    Route::get('/customer/account/billing', 'Mage2\Front\Controller\AccountController@billing');
+    Route::post('/customer/account/billing', 'Mage2\Front\Controller\AccountController@storeBilling');
+
+    Route::get('/customer/account/billing/add', 'Mage2\Front\Controller\AccountController@addBilling');
+    Route::get('/customer/account/billing/{billing}/edit', 'Mage2\Front\Controller\AccountController@editBilling');
+
+    Route::patch('/customer/account/billing/{billing}', 'Mage2\Front\Controller\AccountController@updateBilling');
+
+    //User Shipping Address CRUD
+    Route::get('/customer/account/shipping', 'Mage2\Front\Controller\AccountController@shipping');
+    Route::post('/customer/account/shipping', 'Mage2\Front\Controller\AccountController@storeShipping');
+
+    Route::get('/customer/account/shipping/add', 'Mage2\Front\Controller\AccountController@addShipping');
+    Route::get('/customer/account/shipping/{shipping}/edit', 'Mage2\Front\Controller\AccountController@editShipping');
+
+    Route::patch('/customer/account/shipping/{shipping}', 'Mage2\Front\Controller\AccountController@updateShipping');
+});
+
+
+
 //Route::group(['prefix' => '/'], function() {
 
-Route::group(['middleware' => 'auth'], function() {
-    Route::get('/admin', 'Mage2\Admin\Controller\IndexController@index');
+Route::group(['prefix' => '/admin'], function () {
+
+    Route::get('/login', 'Mage2\Admin\Controller\AuthController@getlogin');
+    Route::get('/logout', 'Mage2\Admin\Controller\AuthController@getLogout');
+
+    Route::post('/login', 'Mage2\Admin\Controller\AuthController@postLogin');
+
+    Route::get('/register', 'Mage2\Admin\Controller\AuthController@getRegister');
+    Route::post('/register', 'Mage2\Admin\Controller\AuthController@postRegister');
+
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/', 'Mage2\Admin\Controller\UsersController@dashboard');
+        Route::resource("/entity", "Mage2\Admin\Controller\EntityController");
+        Route::resource("/attribute", "Mage2\Admin\Controller\AttributeController");
+        Route::resource("/product", "Mage2\Admin\Controller\ProductController");
+        Route::resource("/category", "Mage2\Admin\Controller\CategoryController");
+        Route::resource("/customer-group", "Mage2\Admin\Controller\CustomerGroupController");
+
+        Route::post('/product/uploadImage', "Mage2\Admin\Controller\ProductController@uploadProductImage");
+    });
 });
