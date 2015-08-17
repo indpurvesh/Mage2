@@ -38,7 +38,7 @@ class NavComposerServiceProvider extends ServiceProvider
     private function composeNavigation()
     {
 
-        view()->composer(['front.includes.header', 'front.category.view', 'front.product.view'], function ($view) {
+        view()->composer(['mage2::front.includes.header', 'mage2::front.category.view', 'mage2::front.product.view'], function ($view) {
             //
             $category = new Category();
             $categoryTree = $category->getCategoryTree();

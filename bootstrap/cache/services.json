@@ -1,5 +1,6 @@
 {
     "providers": [
+        "Mage2\\Mage2ServiceProvider",
         "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
         "Illuminate\\Auth\\AuthServiceProvider",
         "Illuminate\\Broadcasting\\BroadcastServiceProvider",
@@ -28,11 +29,10 @@
         "App\\Providers\\EventServiceProvider",
         "App\\Providers\\RouteServiceProvider",
         "App\\Providers\\HelperServiceProvider",
-        "App\\Providers\\FrontAuthServiceProvider",
-        "App\\Providers\\NavComposerServiceProvider",
-        "Mage2\\Mage2ServiceProvider"
+        "App\\Providers\\NavComposerServiceProvider"
     ],
     "eager": [
+        "Mage2\\Mage2ServiceProvider",
         "Illuminate\\Auth\\AuthServiceProvider",
         "Illuminate\\Routing\\ControllerServiceProvider",
         "Illuminate\\Cookie\\CookieServiceProvider",
@@ -48,9 +48,7 @@
         "App\\Providers\\EventServiceProvider",
         "App\\Providers\\RouteServiceProvider",
         "App\\Providers\\HelperServiceProvider",
-        "App\\Providers\\FrontAuthServiceProvider",
-        "App\\Providers\\NavComposerServiceProvider",
-        "Mage2\\Mage2ServiceProvider"
+        "App\\Providers\\NavComposerServiceProvider"
     ],
     "deferred": {
         "command.app.name": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",

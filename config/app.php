@@ -147,7 +147,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
         
-        App\Providers\FrontAuthServiceProvider::class,
         App\Providers\NavComposerServiceProvider::class,
         
         
