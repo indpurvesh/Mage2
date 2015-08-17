@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by Purvesh.
- * User: Purvesh
- * Date: 7/27/2015
- * Time: 2:05 PM
- */
-
 @extends('mage2::front.master')
 
 @section('content')
