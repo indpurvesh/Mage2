@@ -85,7 +85,7 @@
                     {!! AdminAttribute::renderProductAttribute($attribute, $id) !!}
                 @endforeach
 
-                @include('admin._display_errors')
+                @include('mage2::admin._display_errors')
             </div>
         </div>
     </div> 

@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('mage2::admin.master')
 
 @section('content')
 	<div class="content">
@@ -26,7 +26,7 @@
 				</ul>
 			</div>
 			<div class="col-md-10">
-				@include('admin.product._edit')
+				@include('mage2::admin.product._edit')
 			</div>
 		</div>
 		{!! Form::close() !!}

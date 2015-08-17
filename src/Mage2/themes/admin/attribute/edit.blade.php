@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('mage2::admin.master')
  
 @section('content')
 
@@ -9,7 +9,7 @@
 		{!! Form::model($attribute,array('method' => 'PATCH',
                                                  'url' => url('/admin/attribute',$attribute->id)) ) !!}
 
-		@include('admin.attribute._edit')
+		@include('mage2::admin.attribute._edit')
 		
 		{!! Form::hidden('id') !!}
 		

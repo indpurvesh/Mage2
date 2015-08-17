@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('mage2::admin.master')
  
 @section('content')
 <div class="content">
@@ -6,7 +6,7 @@
 
     <div class="col-md-5">
             {!! Form::open(array('files' => 'true', 'url' => url('admin/entity'))) !!}
-            @include('admin.entity._edit')
+        @include('mage2::admin.entity._edit')
             {!! Form::close() !!}
 	</div>
 </div>

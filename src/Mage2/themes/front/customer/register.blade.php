@@ -1,4 +1,4 @@
-@extends('mage2::admin.master')
+@extends('mage2::front.master')
 
 @section('content')
 <h1>Login Here</h1>
@@ -25,7 +25,7 @@
 	        <label>Confirm Password</label>
 	        <input  class="form-control" type="password" name="password_confirmation">
 	    </div>
-		@include('mage2::admin._display_errors')
+		@include('mage2::front._display_errors')
 	    <div>
 	        <button class="btn btn-primary" type="submit">Register</button>
 	    </div>

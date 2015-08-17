@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('mage2::admin.master')
 
 @section('content')
 

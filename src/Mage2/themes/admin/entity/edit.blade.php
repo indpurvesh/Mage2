@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('mage2::admin.master')
  
 @section('content')
 
@@ -7,8 +7,8 @@
 
 	<div class="entity_add_form">
 		{!! Form::model($entity,array('method' => 'PATCH', 'url' => url('/admin/entity',$entity->id)) ) !!}
-		
-		 @include('admin.entity._edit')
+
+		@include('mage2::admin.entity._edit')
 		
 		{!! Form::hidden('id') !!}
 		

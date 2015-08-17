@@ -20,7 +20,7 @@
             {!!  Form::label('type', 'Type')  !!}
             {!!  Form::select('type', $types , null ,array('class'=>'form-control attribute_type'))  !!}
         </div>
-        @include('admin._display_errors')
+        @include('mage2::admin._display_errors')
     </div>
 </div>
 <?php $class = (isset($attribute) && $attribute->AttributeSelectValue()->count()>0) ? "" : 'hide'; ?>

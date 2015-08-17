@@ -1,11 +1,11 @@
 <!doctype html>
 <html>
 <head>
-    @include('admin.includes.head')
+	@include('mage2::admin.includes.head')
 </head>
 <body>
     <header class="container-fluid">
-	        @include('admin.includes.header')
+		@include('mage2::admin.includes.header')
 	    </header>
 	    <div id="main" class="container-fluid">
 	    	@yield('content')

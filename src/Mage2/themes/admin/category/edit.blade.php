@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('mage2::admin.master')
 
 @section('content')
 
@@ -8,7 +8,7 @@
         <div class="add_form">
             {!! Form::model($category,array('method' => 'PATCH', 'files' => true ,'url' => url('/admin/category',$category->id)) ) !!}
 
-            @include('admin.category._edit')
+            @include('mage2::admin.category._edit')
 
             {!! Form::hidden('id') !!}
 

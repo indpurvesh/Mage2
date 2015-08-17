@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('mage2::admin.master')
  
 @section('content')
 
@@ -7,8 +7,8 @@
 
 	<div class="entity_add_form">
 		{!! Form::model($customerGroup,array('method' => 'PATCH', 'url' => url('/admin/customer-group',$customerGroup->id)) ) !!}
-		
-		 @include('admin.customer-group._edit')
+
+		@include('mage2::admin.customer-group._edit')
 		
 		{!! Form::hidden('id') !!}
 		

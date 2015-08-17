@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('mage2::admin.master')
  
 @section('content')
 <div class="content">
@@ -6,7 +6,7 @@
 	<div class="col-md-5 product_add_form">
         {!! Form::open(array('url' => url('admin/attribute'))) !!}
 
-            @include('admin.attribute._edit')
+        @include('mage2::admin.attribute._edit')
 
 
         {!! Form::close() !!}

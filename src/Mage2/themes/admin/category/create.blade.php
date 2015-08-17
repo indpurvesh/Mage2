@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('mage2::admin.master')
 
 @section('content')
     <div class="content">
@@ -6,7 +6,7 @@
 
         <div class="add_form">
             {!! Form::open(array('files' => 'true', 'url' => url('admin/category'))) !!}
-            @include('admin.category._edit')
+            @include('mage2::admin.category._edit')
             {!! Form::close() !!}
         </div>
     </div>
