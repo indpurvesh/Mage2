@@ -82,7 +82,7 @@
 
                 <?php  $id = (isset($product->id) ? $product->id : null ); ?>
                 @foreach($entity->attributes()->get() as $attribute)
-                    {!! AdminAttribute::renderProductAttribute($attribute, $id) !!}
+                    {!! AttriibuteHelper::renderProductAttribute($attribute, $id) !!}
                 @endforeach
 
                 @include('mage2::admin._display_errors')

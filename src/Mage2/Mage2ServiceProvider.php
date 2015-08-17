@@ -39,6 +39,7 @@
 namespace Mage2;
 
 use Mage2\Core\Auth\AuthManager;
+use Mage2\Admin\Helpers\AttributeHelper;
 use Illuminate\Support\ServiceProvider;
 
 class Mage2ServiceProvider extends ServiceProvider {
@@ -54,14 +55,21 @@ class Mage2ServiceProvider extends ServiceProvider {
         $this->registerFrontAuth();
     }
 
-
     /**
      * Register Mage2 application services.
      *
      * @return void
      */
     public function register() {
-        //
+
+        $this->app->bindShared('AttriibuteHelper', function() {
+            
+            $attributeHelper = new AttributeHelper();
+            //var_dump($attributeHelper);
+            return $attributeHelper;
+        });
+       
+        $this->app->alias('AttriibuteHelper', 'Mage2\Admin\Helpers\AttributeHelper');
     }
 
     public function registerRoute() {
@@ -69,16 +77,14 @@ class Mage2ServiceProvider extends ServiceProvider {
             require __DIR__ . '/routes.php';
         }
     }
-    
+
     public function registerThemePath() {
-         $this->loadViewsFrom(__DIR__.'/themes', 'mage2');
+        $this->loadViewsFrom(__DIR__ . '/themes', 'mage2');
     }
 
-    public function registerFrontAuth()
-    {
+    public function registerFrontAuth() {
         $this->app->singleton('front.auth', function ($app) {
             $app['front.auth.loaded'] = true;
-
             return new AuthManager($app);
         });
 
@@ -90,5 +96,15 @@ class Mage2ServiceProvider extends ServiceProvider {
 
         $this->app->alias('front.auth.driver', 'Mage2\Core\Auth\Guard');
     }
+    
+    /**
+	 * Get the services provided by the provider.
+	 *
+	 * @return array
+	 */
+	public function provides()
+	{
+		return array('AttriibuteHelper');
+	}
 
 }
