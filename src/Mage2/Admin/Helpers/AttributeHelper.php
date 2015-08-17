@@ -11,7 +11,7 @@ use Mage2\Core\Model\CategoriesVarcharValue;
 class AttributeHelper
 {
 
-    public function renderProductAttribute($attribute, $entityId = 0)
+    public static function renderProductAttribute($attribute, $entityId = 0)
     {
 
         $value = "";
@@ -72,7 +72,7 @@ class AttributeHelper
 
     }
     
-    public  function renderCategoryAttribute($attribute, $entityId = 0)
+    public static function renderCategoryAttribute($attribute, $entityId = 0)
     {
         $value = "";
 

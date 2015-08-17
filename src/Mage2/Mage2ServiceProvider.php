@@ -62,11 +62,8 @@ class Mage2ServiceProvider extends ServiceProvider {
      */
     public function register() {
 
-        $this->app->bindShared('AttriibuteHelper', function() {
-            
-            $attributeHelper = new AttributeHelper();
-            //var_dump($attributeHelper);
-            return $attributeHelper;
+        $this->app->bind('AttriibuteHelper', function() {
+            return  new AttributeHelper;
         });
        
         $this->app->alias('AttriibuteHelper', 'Mage2\Admin\Helpers\AttributeHelper');

@@ -1,3 +1,7 @@
+<?php 
+/*@TODO  Not Sure Why Facade is not working??   */
+use Mage2\Admin\Helpers\AttributeHelper;
+?>
 <div class="tab-content">
     <div class="tab-pane fade in active" id="tab1">
 
@@ -82,7 +86,7 @@
 
                 <?php  $id = (isset($product->id) ? $product->id : null ); ?>
                 @foreach($entity->attributes()->get() as $attribute)
-                    {!! AttriibuteHelper::renderProductAttribute($attribute, $id) !!}
+                    {!! AttributeHelper::renderProductAttribute($attribute, $id) !!}
                 @endforeach
 
                 @include('mage2::admin._display_errors')
