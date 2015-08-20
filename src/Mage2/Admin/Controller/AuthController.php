@@ -34,11 +34,11 @@ namespace Mage2\Admin\Controller;
 
 use Mage2\Core\Model\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use Mage2\Core\Controller\AdminController;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
-class AuthController extends Controller
+class AuthController extends AdminController
 {
     /*
     |--------------------------------------------------------------------------
@@ -63,7 +63,7 @@ class AuthController extends Controller
     public function getRegister()
     {
         throwException("can't register directly for admin accounts");
-        return view('mage2::admin.auth.register');
+        //return view('mage2::admin.auth.register');
     }
 
     /**

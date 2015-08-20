@@ -103,14 +103,15 @@ Route::group(['prefix' => '/admin'], function () {
     Route::get('/register', 'Mage2\Admin\Controller\AuthController@getRegister');
     Route::post('/register', 'Mage2\Admin\Controller\AuthController@postRegister');
 
-    Route::group(['middleware' => 'auth'], function () {
-        Route::get('/', 'Mage2\Admin\Controller\UsersController@dashboard');
-        Route::resource("/entity", "Mage2\Admin\Controller\EntityController");
-        Route::resource("/attribute", "Mage2\Admin\Controller\AttributeController");
-        Route::resource("/product", "Mage2\Admin\Controller\ProductController");
-        Route::resource("/category", "Mage2\Admin\Controller\CategoryController");
-        Route::resource("/customer-group", "Mage2\Admin\Controller\CustomerGroupController");
+    Route::group(['middleware' => 'auth', 'namespace' => 'Mage2'], function () {
+        Route::get('/', 'Admin\Controller\UsersController@dashboard');
+        Route::resource("/entity", "Admin\Controller\EntityController");
+        Route::resource("/attribute", "Admin\Controller\AttributeController");
+        Route::resource("/product", "Admin\Controller\ProductController");
+        Route::resource("/category", "Admin\Controller\CategoryController");
+        Route::resource("/customer-group", "Admin\Controller\CustomerGroupController");
 
-        Route::post('/product/uploadImage', "Mage2\Admin\Controller\ProductController@uploadProductImage");
+        Route::post('/product/uploadImage', "Admin\Controller\ProductController@uploadProductImage");
+        Route::get('/settings', "Admin\Controller\SettingsController@index");
     });
 });

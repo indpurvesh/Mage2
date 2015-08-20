@@ -53,6 +53,7 @@ class Mage2ServiceProvider extends ServiceProvider {
         $this->registerRoute();
         $this->registerThemePath();
         $this->registerFrontAuth();
+        $this->registerConfig();
     }
 
     /**
@@ -104,4 +105,16 @@ class Mage2ServiceProvider extends ServiceProvider {
 		return array('AttriibuteHelper');
 	}
 
+
+    /*
+     * Register Mage2 Config
+     *
+     *
+     */
+
+    public function registerConfig() {
+        $this->publishes([
+            __DIR__.'/Admin/config/mage2.php' => config_path('mage2.php')
+        ]);
+    }
 }

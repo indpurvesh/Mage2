@@ -25,6 +25,7 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="{!! url('/admin/settings') !!}" title="Settings">Settings</a></li>
                 <?php if (!Auth::check()): ?>
                     <li><a href="{!! url('/admin/login') !!}">Login</a></li>
 

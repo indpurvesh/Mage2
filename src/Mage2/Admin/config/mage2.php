@@ -2,11 +2,6 @@
 
 
 return [
-
-    'system' => [
-        'meta_title' => ['type' => 'text']
-    ],
-
     'payment' => [
         'paypal'        => ['class' => '/Modules/Core/Payment','label' => 'Paypal'],
         'creditcart'    => ['class' => '/Modules/Core/Payment','label' => 'Credit Cart']

@@ -1,30 +1,77 @@
-@extends('mage2::admin.master')
+<!doctype html>
+<html>
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{!! asset('/css/libs/bootstrap.min.css') !!}">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <style>
+        html, body {
+            height: 100%;
+        }
 
-@section('content')
-<div class="col-lg-offset-2 col-md-5">
-<h1>Login Here</h1>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            display: table;
+            font-weight: 100;
+            font-family: 'Open Sans', sans-serif;
+        }
 
-<form method="POST" action="{!! url('/admin/login')  !!}">
-    {!! csrf_field() !!}
+        .container {
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
 
-    <div class="form-group">
-        <label>Email</label>
-        <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+        .content {
+            text-align: center;
+            display: inline-block;
+            width: 40%;
+        }
+
+        .mage2logo {
+            max-height: 100px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="content">
+        <div id="loginbox">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title text-center">
+                        <img src="{{ asset('images/mage2-logo.png') }}" class="mage2logo" alt="Mage2 "
+                             title="http://mage2.website/"/>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+
+                    <form name="form" id="form" enctype="multipart/form-data" action="{!! url('/admin/login') !!}" method="POST">
+                        {!! Form::token() !!}
+                        <div class="form-group">
+                            {!! Form::text('email',null,['class' => 'form-control','placeholder'=>'Email']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::password('password',['class' => 'form-control','placeholder'=>'Password']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::submit('Login',['class' => 'btn btn-primary pull-right']) !!}
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="form-group">
-        <label>Password</label>
-        <input type="password" class="form-control" name="password" id="password">
-    </div>
-
-    <div>
-        <input type="checkbox" name="remember"> Remember Me
-    </div>
-
-    @include('mage2::admin._display_errors')
-    <div class="form-group">
-        <button class="btn btn-primary" type="submit">Login</button>
-    </div>
-</form>
 </div>
-@endsection
+</body>
+</html>
