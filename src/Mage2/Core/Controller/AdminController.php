@@ -7,11 +7,11 @@ use Mage2\Core\Model\Extension;
 
 class AdminController extends Controller
 {
-        public function getSystemConfigs() {
+        public function getSettings() {
             $settings = [];
             $extensions = Extension::all();
             foreach($extensions as $extension) {
-                $settings = array_replace_recursive(include base_path($extension->path . "/config/system.php"),$settings);
+                $settings = array_replace_recursive(include base_path($extension->path . "/config/settings.php"),$settings);
 
             }
             return $settings;

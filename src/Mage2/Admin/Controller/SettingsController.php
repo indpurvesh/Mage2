@@ -45,7 +45,8 @@ class SettingsController extends AdminController
      */
     public function index()
     {
-        return $system = $this->getSystemConfigs();
+        return $setting = $this->getSettings();
+       
         return view('mage2::admin.settings.index')->with("system" , $system);
     }
 
